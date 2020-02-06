@@ -19,7 +19,7 @@ $(document).ready(function(){
         // .then(data=>data.text())
         // .then(data=>console.log(data))
         console.log(form);
-        $.post('newProgram', form, prog_id=>console.log(prog_id));
+        $.post('deleteOutput', form, prog_id=>console.log(prog_id));
     })
 
 });
