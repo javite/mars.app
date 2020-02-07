@@ -61,3 +61,7 @@ Route::get('/outputList',"ProgramsController@outputList");
 Route::get('/debug', function () {
     return view('debug');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

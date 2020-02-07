@@ -38,7 +38,7 @@ $date = $dia.", ".$date;
 //     $authentication->login($_SESSION["user_email"]);
 //     $nombreUsuario = $_SESSION["user_name"];
 // } else {
-    $nombreUsuario = "Ingresar";
+    $nombreUsuario = "Ingresar.";
 // }
 // $nombreUsuario = "Ingresar";
 // include("head.php");
@@ -63,7 +63,7 @@ $date = $dia.", ".$date;
             <div class="cont-user">
                 <div class="contenedor-usuario">
                     <i class="material-icons">account_circle</i>
-                    <a class="usuario" href="login.php"><?=$nombreUsuario?></a>
+                    <a class="usuario" href="login"><?=$nombreUsuario?></a>
                 </div>
             </div>
          </div>  
