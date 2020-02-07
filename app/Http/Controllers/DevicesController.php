@@ -48,4 +48,11 @@ class DevicesController extends Controller
         $newDevice->save();
         return $newDevice->id;
       }
+
+      public function programList(){
+        $devices = Device::All();
+        $vac = compact('devices');
+    
+        return view('programList', $vac);
+    }
 }

@@ -55,4 +55,11 @@ class ProgramsController extends Controller
 
         return $id; //TODO: ver errores
       }
+
+      public function outputList(){
+        $programs = Program::All();
+        $vac = compact('programs');
+    
+        return view('outputList', $vac);
+    }
 }

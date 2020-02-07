@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Output;
 
 class OutputsController extends Controller
 {
     public function getOutputs($program_id){
-        $outptus = Output::where("program_id","=",$program_id )->get();
+        $outputs = Output::where("program_id","=",$program_id )->get();
+        // $outputs = DB::table('outputs')
+        //     ->join('outputs_names', 'outputs.outputs_names_id', '=', 'outputs_names.id')
+        //     ->where('program_id',$program_id )->get();
 
-        return json_encode($outptus);
+        return $outputs->toJson(); //no hace falta to Json, ya devuelve Json.
     }
 
     public function saveOutput(Request $data){

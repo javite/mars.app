@@ -56,6 +56,8 @@ Route::post('/newDay',"DaysController@newDay");
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('/programList',"DevicesController@programList");
+Route::get('/outputList',"ProgramsController@outputList");
 Route::get('/debug', function () {
     return view('debug');
 });
