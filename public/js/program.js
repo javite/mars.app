@@ -16,7 +16,7 @@ var config;
 
 
 $(document).ready(function(){
-    device_id = getCookie('device_id');
+    device_id = 6;//getCookie('device_id');
     console.log('device_id =',device_id );
     if(device_id == null){
         console.log("no hay device id");
@@ -28,6 +28,7 @@ $(document).ready(function(){
         days_names = data[0];
         config.setDaysNames(days_names);
         config.setOutNames(outs_names);
+        console.log('Days names',outs_names);
         createDOM();
         let getProgram = getPrograms();
         getProgram.then(json => {
@@ -35,14 +36,15 @@ $(document).ready(function(){
             console.log('programs: ',programs);
             if(isEmpty(programs)){
                 programBundle.showError('No hay programas creados aun');
+            }else {
+                let _getOutputs = getOutputs(programs[0].id);
+                _getOutputs.then(json => {
+                    outputs = json;
+                    console.log('outputs', outputs);
+
+                    updateDOM(programs, outputs);
+                })
             }
-            let _getOutputs = getOutputs(programs[0].id);
-            _getOutputs.then(json => {
-                outputs = json;
-                console.log('outputs', outputs);
-                updateDOM(programs, outputs);
-                
-            })
         });
     });
 });
@@ -54,8 +56,8 @@ function createDOM() {
     let programSelector = programBundle.change();
     programSelector.change(function(){  //selector de salida
         out_num = 0;
-        program_id = $(this).val();
-        console.log('program id: ', program_id);
+        program_id = programBundle.getValue();
+        console.log('program_id: ',program_id);
         getOutputs(program_id);
     })
     let outputSelector = programBundle.outSelector();
@@ -68,12 +70,12 @@ function createDOM() {
     programBundle.show();
 }
 function getNames(){
-    return fetch("api/getNames.php")
+    return fetch("getDaysNames")
     .then(data =>data.json())
     .catch(error => console.error(error))
 }
 function getPrograms(){
-    return fetch(`api/getProgram.php?device_id='${device_id}`)//todos los programas
+    return fetch(`getPrograms/${device_id}`)//todos los programas
     .then(data =>data.json())
     .catch(error => console.error(error))
 }
@@ -82,7 +84,7 @@ function updateDOM(_programs, _outputs) {
 }
 
 function getOutputs(_program_id){
-    return fetch(`api/getOutputs.php?program_id=${_program_id}`)
+    return fetch(`/getOutputs/${_program_id}`)
     .then(data => data.json())
     .catch(error => console.error(error))
 }
@@ -318,9 +320,6 @@ function saveProgramName(){
     // });
 
 }
-
-
-
 
 
 // function getOut(_program_id, out_num){

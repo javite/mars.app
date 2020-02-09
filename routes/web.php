@@ -13,17 +13,16 @@
 
 Route::get('/', function () {
     return view('init');
-});
-Route::get('/main', function () {
-    // $vac = compact("id");
-    return view('main');
-});
+});//->middleware('auth');
+Route::get('/home',function () {
+    return view('home');
+});//->middleware('auth');
 Route::get('/stats', function () {
     return view('stats');
-});
+});//->middleware('auth');
 Route::get('/program', function () {
     return view('program');
-});
+});//->middleware('auth');
 
 /*DEVICES*/
 Route::get('/getDevices/{user_id}',"DevicesController@getDevices");
@@ -32,7 +31,7 @@ Route::post('/deleteDevice',"DevicesController@deleteDevice");
 Route::post('/newDevice',"DevicesController@newDevice");
 
 /*PROGRAMS*/
-Route::get('/programs/{device_id }',"ProgramsController@getPrograms");
+Route::get('/getPrograms/{device_id}',"ProgramsController@getPrograms");
 Route::post('/saveProgram',"ProgramsController@saveProgram");
 Route::post('/deleteProgram',"ProgramsController@deleteProgram");
 Route::post('/newProgram',"ProgramsController@newProgram");
@@ -48,6 +47,7 @@ Route::get('/getDays/{output_id}',"DaysController@getDays");
 Route::post('/saveDay',"DaysController@saveDay");
 Route::post('/deleteDay',"DaysController@deleteDay");
 Route::post('/newDay',"DaysController@newDay");
+Route::get('/getDaysNames',"DaysController@getDaysNames");
 
 /*SENSORS*/
 

@@ -9,22 +9,22 @@
 @section('content')
 <form  id="program-form" class="form col"  >
     <!-- <select name="program" class="program-selector form-control">
-        <option value="14">Tomates</option>
+        <option value="19">Tomates</option>
         <option value="4">pepes</option>
     </select> -->
     <!-- <div class="form-group">
         <label for="user_id" class="form-control">user id</label>
         <input type="text" name="user_id" value="1" class="form-control">
-    </div>
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
         <label for="device_id" class="form-control">Device id</label>
         <input type="text" name="device_id" value="14">
-    </div>
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
         <label for="device_name" class="form-control">Device name</label>
         <input type="text" name="device_name" value="guille">
-    </div>
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
         <button type="submit" class="btn btn-secondary">submit</button>
     </div> -->
 
@@ -69,6 +69,10 @@
         <input type="text" name="program_id" value="13" class="form-control">
     </div>
     <div class="form-group">
+        <label for="program_name" class="form-control">Nombre Programa</label>
+        <input type="text" name="program_name" value="Albahaca" class="form-control">
+    </div>
+    <!-- <div class="form-group">
         <label for="output_id" class="form-control">Output id</label>
         <input type="text" name="output_id" value="32" class="form-control">
     </div>
@@ -79,10 +83,10 @@
     <div class="form-group">
         <label for="timer_mode" class="form-control">timer mode</label>
         <input type="text" name="timer_mode" value="0">
-    </div>
+    </div> -->
     <div class="form-group">
         <br>
-        <button type="submit" class="btn btn-secondary">submit</button>
+        <button type="button" class="btn btn-secondary" id="submit">submit</button>
     </div>
 </form>
 

@@ -23,7 +23,7 @@ class ProgramsController extends Controller
         } else {
             $program->name = $program_name;
             $program->save();
-            $response = $program->id;
+            $response = $program;
         }
     
         return $response; //TODO: ver errores
@@ -53,11 +53,11 @@ class ProgramsController extends Controller
           $id = 0;
         }
 
-        return $id; //TODO: ver errores
+        return $newProgram; //TODO: ver errores
       }
 
       public function outputList(){
-        $programs = Program::All();
+        $programs = Program::all();
         $vac = compact('programs');
     
         return view('outputList', $vac);

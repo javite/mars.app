@@ -34,14 +34,8 @@ switch (date('N')) {
 }
 $date = $dia.", ".$date; 
 
-// if($authentication->isLogged()){
-//     $authentication->login($_SESSION["user_email"]);
-//     $nombreUsuario = $_SESSION["user_name"];
-// } else {
-    $nombreUsuario = "Ingresar.";
-// }
-// $nombreUsuario = "Ingresar";
-// include("head.php");
+//TODO ON FRONT END.
+
 ?>
 
 @extends('template')
@@ -63,7 +57,14 @@ $date = $dia.", ".$date;
             <div class="cont-user">
                 <div class="contenedor-usuario">
                     <i class="material-icons">account_circle</i>
-                    <a class="usuario" href="login"><?=$nombreUsuario?></a>
+                    <a class="usuario" href="login">
+                    @auth
+                       {{Auth::user()->name}}
+                    @endauth
+                    @guest
+                        Ingresar.
+                    @endguest
+                    </a>
                 </div>
             </div>
          </div>  

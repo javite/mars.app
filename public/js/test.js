@@ -9,8 +9,8 @@ $(document).ready(function(){
     var token = $('meta[name="_token"]').attr('content');
     $('#program-form').prepend(`<input type="hidden" name="_token" value= ${token}>`);
     console.log('test')
-    $('#program-form').submit(e => {
-        e.preventDefault();
+    $('#submit').click(() => {
+        // e.preventDefault();
         form = $('#program-form').serialize();
         // fetch('saveProgram', {
         //     method: 'POST',
@@ -19,7 +19,8 @@ $(document).ready(function(){
         // .then(data=>data.text())
         // .then(data=>console.log(data))
         console.log(form);
-        $.post('deleteOutput', form, prog_id=>console.log(prog_id));
+        $.post('saveProgram', form)
+            .done(prog_id=>console.log(prog_id));
     })
 
 });
