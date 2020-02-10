@@ -14,7 +14,9 @@
 @endsection
 
 @section('content')
-<div class="container" id="program-container"></div>
+<div class="container" id="program-container">
+    <form class ='form-program' id='program-form'>@csrf</form>
+</div>
 @endsection
 
 

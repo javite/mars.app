@@ -9,10 +9,10 @@ use App\Output;
 class OutputsController extends Controller
 {
     public function getOutputs($program_id){
-        $outputs = Output::where("program_id","=",$program_id )->get();
-        // $outputs = DB::table('outputs')
-        //     ->join('outputs_names', 'outputs.outputs_names_id', '=', 'outputs_names.id')
-        //     ->where('program_id',$program_id )->get();
+        // $outputs = Output::where("program_id","=",$program_id )->get();
+        $outputs = DB::table('outputs_names')
+            ->join('outputs', 'outputs.outputs_names_id', '=', 'outputs_names.id')
+            ->where('program_id',$program_id )->get();
 
         return $outputs->toJson(); //no hace falta to Json, ya devuelve Json.
     }
@@ -34,13 +34,13 @@ class OutputsController extends Controller
         return $response;
     }
 
-    public function newOutput(Request $data){
+    public function newOutput(Request $data){ //implementado en ProgramsController -> newProgram
         $program_id = $data["program_id"];
         $out = $data["output"];
         $timer_mode = $data["timer_mode"];
         $newOutput = new Output();
         $newOutput->program_id = $program_id ;
-        $newOutput->out = $out;
+        $newOutput->outputs_names_id = $out;
         $newOutput->timerMode = $timer_mode;
         $newOutput->save();
         

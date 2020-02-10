@@ -22,8 +22,6 @@ export default class ProgramBundle {
         let thisclass = this;
         $('#program-form').append(this.content);
         $('#program').change(()=>thisclass.setValue($('#program').val()));//eventor de cambio en el selector 
-        let token = $('meta[name="_token"]').attr('content');
-        $('#program-form').prepend(`<input type="hidden" name="_token" value= ${token}>`);
         /*MENU DE ICONOS NEW, EDIT, ERASE PROGRAM */
         this.iconProgramBundle = new IconProgramBundle();  
         this.iconProgramBundle.newEvent().click(()=>thisclass.newProgram());

@@ -8,6 +8,7 @@
 @endsection
 @section('content')
 <form  id="program-form" class="form col"  >
+    @csrf
     <!-- <select name="program" class="program-selector form-control">
         <option value="19">Tomates</option>
         <option value="4">pepes</option>
@@ -16,10 +17,10 @@
         <label for="user_id" class="form-control">user id</label>
         <input type="text" name="user_id" value="1" class="form-control">
     </div> -->
-    <!-- <div class="form-group">
+    <div class="form-group">
         <label for="device_id" class="form-control">Device id</label>
-        <input type="text" name="device_id" value="14">
-    </div> -->
+        <input type="text" name="device_id" value="1">
+    </div>
     <!-- <div class="form-group">
         <label for="device_name" class="form-control">Device name</label>
         <input type="text" name="device_name" value="guille">

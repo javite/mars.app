@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Day;
 use App\Days_name;
+use App\Outputs_name;
 use Illuminate\Support\Facades\DB;
 
 class DaysController extends Controller
@@ -63,7 +64,8 @@ class DaysController extends Controller
         foreach($days_names as $index => $days_name){
             $days_names_a[$index ] = $days_name->day_name;
         }
-        $outputs_names = DB::table('outputs_names')->get();
+        // $outputs_names = DB::table('outputs_names')->get();
+        $outputs_names = Outputs_name::all();
 
         foreach($outputs_names as $index => $outputs_name){
             $outputs_names_a[$index ] = $outputs_name->output_name;

@@ -6,8 +6,8 @@ $(document).ready(function(){
     //     }
     //   });
 
-    var token = $('meta[name="_token"]').attr('content');
-    $('#program-form').prepend(`<input type="hidden" name="_token" value= ${token}>`);
+    // var token = $('meta[name="_token"]').attr('content');
+    // $('#program-form').prepend(`<input type="hidden" name="_token" value= ${token}>`);
     console.log('test')
     $('#submit').click(() => {
         // e.preventDefault();
@@ -19,7 +19,7 @@ $(document).ready(function(){
         // .then(data=>data.text())
         // .then(data=>console.log(data))
         console.log(form);
-        $.post('saveProgram', form)
+        $.post('newProgram', form)
             .done(prog_id=>console.log(prog_id));
     })
 

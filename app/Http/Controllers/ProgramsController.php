@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Program;
+use App\Outputs_name;
+use App\Output;
 
 class ProgramsController extends Controller
 {
@@ -42,6 +44,7 @@ class ProgramsController extends Controller
         $program_name = $data["program_name"];
         $photo_periods = 1;
         $programs = Program::where('name', '=', $program_name)->get();
+        
         if (sizeOf($programs) == 0) {  
           $newProgram = new Program();
           $newProgram->device_id  = $device_id;
@@ -49,10 +52,20 @@ class ProgramsController extends Controller
           $newProgram->photo_periods = $photo_periods;
           $newProgram->save();
           $id = $newProgram->id;
+          $outputs_names = Outputs_name::all();
+          foreach ($outputs_names as $key => $outputs_name) { //se crean todas las salidas
+            $program_id = $id;
+            $out = $outputs_name->id;
+            $timer_mode = 0;
+            $newOutput = new Output();
+            $newOutput->program_id = $program_id ;
+            $newOutput->outputs_names_id = $out;
+            $newOutput->timerMode = $timer_mode;
+            $newOutput->save();
+          }
         } else {
           $id = 0;
         }
-
         return $newProgram; //TODO: ver errores
       }
 

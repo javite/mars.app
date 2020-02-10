@@ -50,7 +50,7 @@ $(document).ready(function(){
 });
 
 function createDOM() {
-    $('#program-container').html("<form class ='form-program' id='program-form'></form>");
+    // $('#program-container').html("<form class ='form-program' id='program-form'></form>");
     programBundle = new ProgramBundle(config);
 
     let programSelector = programBundle.change();
@@ -58,7 +58,7 @@ function createDOM() {
         out_num = 0;
         program_id = programBundle.getValue();
         console.log('program_id: ',program_id);
-        getOutputs(program_id);
+        // getOutputs(program_id);
     })
     let outputSelector = programBundle.outSelector();
     outputSelector.change(function(){  //selector de salida

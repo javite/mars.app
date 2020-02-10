@@ -17,6 +17,7 @@ export default class OutBundle {
     `;
     iconEdit;
     eventEdit;
+    output;
     constructor(config){
         let thisclass = this;
         this.config = config;
@@ -28,39 +29,38 @@ export default class OutBundle {
         this.daysBundle.show();
         // this.eventEdit.click(()=>console.log(this.iconEdit.getState()));//agregar que hace cuando se presiona el boton edit.
         this.outs_names = this.config.getOutNames();
+        this.firstTime = true;
     }
 
     update(outputs){
         let thisclass = this;
-        let selected;
-        let firstTime = false;
-        if(typeof this.value === "undefined"){
-            firstTime = true;
-        }
+        let selected = '';
         let selector = $('#out');
         selector.html('');
-        for (let index = 0; index < this.outs_names.length; index++) {
-            if(firstTime){
-                this.value = 0;
+        for (let index = 0; index < outputs.length; index++) {
+            if(this.firstTime && index == 0){
+                selected = 'selected';
+                this.value = outputs[0].id;
+            } else {
+                selected = '';
             } 
-            selector.append(`<option value="${index}" ${selected}>${this.outs_names[index]}</option>`);
+            selector.append(`<option value="${outputs[index].id}" ${selected} >${outputs[index].output_name}</option>`);
         }
-        selector.val(thisclass.value);
-        $('#output_id').val(this.value);
-        let output = outputs.filter(val=>val.out == this.value)[0];
-        this.daysBundle.update(output);
-  
-        if(this.config.isEmpty(output)){
+        selector.val(this.value);
+        this.output = outputs.filter(output=>output.id == this.value)[0];
+        this.daysBundle.update(this.output);
+        if(this.config.isEmpty(this.output)){
             this.iconEdit.hide();
         } else {
             this.iconEdit.show();
         }  
-        console.log(output);
-        
+        console.log(this.output);
+        this.firstTime = false;
     }
 
     setValue(val){
         this.value = val;
+        $('#output_id').val(this.value);
     }
     
     change(){
