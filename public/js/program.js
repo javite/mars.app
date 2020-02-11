@@ -40,8 +40,7 @@ $(document).ready(function(){
                 let _getOutputs = getOutputs(programs[0].id);
                 _getOutputs.then(json => {
                     outputs = json;
-                    console.log('outputs', outputs);
-
+                    console.log('outputs', outputs.outputs);
                     updateDOM(programs, outputs);
                 })
             }
@@ -50,15 +49,18 @@ $(document).ready(function(){
 });
 
 function createDOM() {
-    // $('#program-container').html("<form class ='form-program' id='program-form'></form>");
     programBundle = new ProgramBundle(config);
-
     let programSelector = programBundle.change();
     programSelector.change(function(){  //selector de salida
         out_num = 0;
         program_id = programBundle.getValue();
         console.log('program_id: ',program_id);
-        // getOutputs(program_id);
+        let _getOutputs = getOutputs(program_id);
+        _getOutputs.then(json => {
+            outputs = json;
+            console.log('outputs', outputs);
+            updateDOM(programs, outputs);
+        })
     })
     let outputSelector = programBundle.outSelector();
     outputSelector.change(function(){  //selector de salida
@@ -80,6 +82,7 @@ function getPrograms(){
     .catch(error => console.error(error))
 }
 function updateDOM(_programs, _outputs) {
+    console.log('outputs update dom',_outputs);
     programBundle.update(_programs, _outputs); //actualiza el select
 }
 

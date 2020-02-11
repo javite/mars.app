@@ -18,37 +18,38 @@ export default class DaysBundle {
         this.daysSubmit.cancel().click(()=>thisclass.cancel());
         this.addDayClick = this.addDay.click();
         this.addDayClick.click(()=>thisclass.newDay());
-        this.days = [];
+        this.days_array = [];
         this.id = 0;
     }
 
-    update(output){
+    update(days, id){
         this.empty();
-        this.output = output;
+        this.days = days;
         this.daysSubmit.hide();
-        if(this.config.isEmpty(output)){
+        this.id = id;
+        console.log(this.id);
+        if(this.days[this.id].length == 0){
             this.errorMsg.fadeIn();
             this.addDay.show();
-            this.id = -1;
             this.days = [];
-            console.log("output vacio")
+            console.log("no hay dias")
         } else {
             this.errorMsg.fadeOut();
-            console.log(output.days.length);
-            if(output.days.length > 0){
-                for (let id = 0; id < output.days.length; id++) {
-                    this.days[id] = new Day(id, output, this.days_names);
-                    this.days[id].show();
-                    console.log(output.days);
-                    if(output.days[0] == 7){
-                        this.addDay.hide();
-                    } else {
-                        this.addDay.show();
-                    }
-                    this.id = id;
+                for (let index = 0; index < this.days[this.id].length; index++) {
+                    this.days_array[index] = new Day(this.days[this.id][index]);
+                    this.days_array[index].show();
+                    console.log(this.days);
                 }
             }
-        }
+                    // if(this.days[0] == 7){
+                    //     this.addDay.hide();
+                    // } else {
+                    //     this.addDay.show();
+                    // }
+        //             this.id = id;
+        //         }
+        //     }
+        // }
     }
 
     newDay(){

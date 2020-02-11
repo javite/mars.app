@@ -18,6 +18,7 @@ export default class OutBundle {
     iconEdit;
     eventEdit;
     output;
+    days;
     constructor(config){
         let thisclass = this;
         this.config = config;
@@ -33,28 +34,29 @@ export default class OutBundle {
     }
 
     update(outputs){
-        let thisclass = this;
+        this.outputs = outputs.outputs;
+        this.days = outputs.days;
         let selected = '';
         let selector = $('#out');
         selector.html('');
-        for (let index = 0; index < outputs.length; index++) {
+        for (let index = 0; index < this.outputs.length; index++) {
             if(this.firstTime && index == 0){
                 selected = 'selected';
-                this.value = outputs[0].id;
+                this.value = this.outputs[0].id;
             } else {
                 selected = '';
             } 
-            selector.append(`<option value="${outputs[index].id}" ${selected} >${outputs[index].output_name}</option>`);
+            selector.append(`<option value="${this.outputs[index].id}" ${selected} >${this.outputs[index].output_name}</option>`);
         }
         selector.val(this.value);
-        this.output = outputs.filter(output=>output.id == this.value)[0];
-        this.daysBundle.update(this.output);
-        if(this.config.isEmpty(this.output)){
+        this.output = this.outputs.filter(output=>output.id == this.value)[0];
+        this.daysBundle.update(this.days, this.output.outputs_names_id);
+        if(this.config.isEmpty(this.days)){
             this.iconEdit.hide();
         } else {
             this.iconEdit.show();
         }  
-        console.log(this.output);
+        console.log('days:',this.days);
         this.firstTime = false;
     }
 

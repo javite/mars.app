@@ -39,7 +39,7 @@ export default class ProgramBundle {
 
     update(programs, outputs){
         this.programs = programs;
-        this.ouputs = outputs;
+        this.outputs = outputs;
         let thisclass = this;
         let selected;
         let firstTime = false;
@@ -48,7 +48,7 @@ export default class ProgramBundle {
         }
         this.selector = $('#program');
         this.selector.html('');
-        for (let index = 0; index < programs.length; index++) {
+        for (let index = 0; index < this.programs.length; index++) {
             if(firstTime){
                 this.value = 0; //programs[0].id
             } 
@@ -57,14 +57,14 @@ export default class ProgramBundle {
             } else {
                 selected = '';
             }
-            this.selector.append(`<option value="${index}" ${selected}>${programs[index].name}</option>`); //${programs[index].id}
+            this.selector.append(`<option value="${index}" ${selected}>${this.programs[index].name}</option>`); //${programs[index].id}
         }
         this.program_id = $('#program_id');
-        this.program_id.val(programs[this.value].id); //guarda el id del programa
+        this.program_id.val(this.programs[this.value].id); //guarda el id del programa
         this.selector.val(thisclass.value); // actualiza el selector con el valor de Value. Se guarda el index de programas.
-        this.iconProgramBundle.update(programs);
+        this.iconProgramBundle.update(this.programs);
         this.iconProgramBundle.show();
-        this.outBundle.update(outputs);//acualiza select de salidas
+        this.outBundle.update(this.outputs);//acualiza select de salidas
     }
     newProgram(){
         this.hide();

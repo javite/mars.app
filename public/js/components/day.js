@@ -1,8 +1,9 @@
 export default class Day {
   
         id ;
-    constructor(id, output, days_names){
-        this.id = id; //day-selector-
+    constructor(day){
+        this.day = day; //day-selector-
+        this.id = this.day.id;
         this.content = `
             <div class="day-bundle-${id} col-sm-6 day" style='display:none;' key="${id}">
                 <div class="day-selector-bundle-${id} ">
