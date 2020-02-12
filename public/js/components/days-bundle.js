@@ -26,7 +26,7 @@ export default class DaysBundle {
         this.empty();
         this.days = days;
         this.daysSubmit.hide();
-        this.id = id;
+        this.id = id-1;
         console.log(this.id);
         if(this.days[this.id].length == 0){
             this.errorMsg.fadeIn();
@@ -36,9 +36,9 @@ export default class DaysBundle {
         } else {
             this.errorMsg.fadeOut();
                 for (let index = 0; index < this.days[this.id].length; index++) {
-                    this.days_array[index] = new Day(this.days[this.id][index]);
+                    this.days_array[index] = new Day(this.days[this.id][index], this.config.days_names);
                     this.days_array[index].show();
-                    console.log(this.days);
+                    console.log(this.days_array);
                 }
             }
                     // if(this.days[0] == 7){
@@ -55,7 +55,7 @@ export default class DaysBundle {
     newDay(){
         let output = null;
         this.id += 1;
-        let newDay = new Day(this.id, output, this.days_names);
+        let newDay = new Day();
         this.days.push(newDay);
         newDay.show();
         this.enableDays();

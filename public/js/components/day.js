@@ -1,49 +1,50 @@
 export default class Day {
   
         id ;
-    constructor(day){
+    constructor(day, days_names){
         this.day = day; //day-selector-
-        this.id = this.day.id;
+        if(this.day.id){
+            this.id = this.day.id;
+        } else {
+            this.id = 0;
+        }
+        
         this.content = `
-            <div class="day-bundle-${id} col-sm-6 day" style='display:none;' key="${id}">
-                <div class="day-selector-bundle-${id} ">
+            <div class="day-bundle col-sm-6 day" style='display:none;' key="${this.id}">
+                <div class="day-selector-bundle">
                     <label class="label-day-selector label" for="days">Dia</label>
                     <br>
-                    <select class="form-control day" disabled="" name="day-${id}" id="select-${id}">
+                    <select class="form-control day" disabled="" name="day" id="select">
                     </select>
                 </div>
-                <div class="row hour-bundle-${id} ">
-                    <div class="col h-on-bundle-0">
+                <div class="row hour-bundle">
+                    <div class="col h-on-bundle">
                         <label class="label-h-on" for="hour_on">Hora encendido</label>
-                        <input type="time" class="h-on form-control text-center time" id="hour_on-${id}" disabled="" name="hour_on-${id}" value="12:00">
+                        <input type="time" class="h-on form-control text-center time" id="hour_on" disabled="" name="hour_on" value="12:00">
                     </div>
-                    <div class="col h-off-bundle-${id} ">
+                    <div class="col h-off-bundle ">
                         <label class="label-h-off" for="hour_off">Hora apagado</label>
-                        <input type="time" class="h-off form-control text-center time" id="hour_off-${id}" disabled="" name="hour_off-${id}" value="20:00">
+                        <input type="time" class="h-off form-control text-center time" id="hour_off" disabled="" name="hour_off" value="20:00">
                     </div>
                 </div>
             </div>`;
 
         $('#days-bundle').prepend(this.content);
-        let outDay;
-        if(!this.isEmpty(output)){
-            $(`#hour_on-${id}`).val(`${output.hour_on[id]}`);
-            $(`#hour_off-${id}`).val(`${output.hour_off[id]}`);
-            outDay = output.days[id];
-        } else {
-            outDay = 0;
+        if(!this.isEmpty(day)){
+            $(`#hour_on`).val(`${day.hour_on}`);
+            $(`#hour_off`).val(`${day.hour_off}`);
         }
 
         let selected = '';
         for (let i = 0; i < days_names.length; i++) {
-            if (outDay == i) {
+            if (day.day == i) {
                 selected = 'selected';
             } else {
                 selected = '';
             }
-            $(`#select-${id}`).append(`<option value="${i}" ${selected}>${days_names[i]}</option>`)
+            $(`#select`).append(`<option value="${i}" ${selected}>${days_names[i]}</option>`)
         }
-        this.id = id;
+        this.sefl = $(".day-bundle key[${this.id}]").
     }
 
     update(){
@@ -51,11 +52,11 @@ export default class Day {
     }
 
     hide(){
-        $(".day-bundle-"+this.id).slideUp();
+        $(".day-bundle").slideUp();
     }
 
     show(){
-        $(".day-bundle-"+this.id).slideDown();
+        $(".day-bundle").slideDown();
     }
     
     showError(errorText){
