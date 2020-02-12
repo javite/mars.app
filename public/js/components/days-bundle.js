@@ -27,38 +27,32 @@ export default class DaysBundle {
         this.days = days;
         this.daysSubmit.hide();
         this.id = id-1;
-        console.log(this.id);
         if(this.days[this.id].length == 0){
             this.errorMsg.fadeIn();
             this.addDay.show();
             this.days = [];
-            console.log("no hay dias")
         } else {
             this.errorMsg.fadeOut();
-                for (let index = 0; index < this.days[this.id].length; index++) {
-                    this.days_array[index] = new Day(this.days[this.id][index], this.config.days_names);
-                    this.days_array[index].show();
-                    console.log(this.days_array);
-                }
+            for (let index = 0; index < this.days[this.id].length; index++) {
+                this.days_array[index] = new Day(this.days[this.id][index], this.config.days_names);
+                this.days_array[index].show();
+                console.log(this.days_array);
             }
-                    // if(this.days[0] == 7){
-                    //     this.addDay.hide();
-                    // } else {
-                    //     this.addDay.show();
-                    // }
-        //             this.id = id;
-        //         }
-        //     }
-        // }
+            if(this.days_array[0].day.day == 7){
+                this.addDay.hide();
+            } else {
+                this.addDay.show();
+            }
+        }
     }
 
     newDay(){
         let output = null;
         this.id += 1;
-        let newDay = new Day();
+        let newDay = new Day(null, this.config.days_names);
         this.days.push(newDay);
         newDay.show();
-        this.enableDays();
+        newDay.enable();
         this.errorMsg.hide();
         this.addDay.hide();
         this.daysSubmit.show();
@@ -86,9 +80,9 @@ export default class DaysBundle {
         let data = JSON.stringify($('#program-form').serialize()); //.serializeArray()
         console.log(data);
         if(this.days.length == 1){
-            func = 'newOutput.php';
+            func = 'newDay';
         } else {
-            func = 'updateOutput.php';
+            func = 'updateDay';
         }
         // fetch(func, {
         //     method: 'POST',
