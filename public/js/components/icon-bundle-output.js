@@ -9,8 +9,8 @@ export default class IconOutputBundle {
     
     constructor(){
         let thisclass = this;
-        $('.out-bundle').prepend(this.content);
-        this.clickEvent = $('#btn-edit-day').click(()=>thisclass.click());
+        $('.day').prepend(this.content);
+        this.clickEvent = $('#btn-edit-day').click(()=>this.click());
     }
 
     update(){

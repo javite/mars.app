@@ -47,7 +47,7 @@ class DaysController extends Controller
         $newDay->hour_off = $hour_off;
         $newDay->save();
         
-        return $newDay->id;
+        return $newDay;
     }
 
     public function deleteDay(Request $data){

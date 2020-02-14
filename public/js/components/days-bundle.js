@@ -14,23 +14,23 @@ export default class DaysBundle {
         this.errorMsg =  $('#error-empty-output');
         this.addDay = new AddDayButton();
         this.daysSubmit = new DaysSubmit();
-        this.daysSubmit.submit().click(()=>thisclass.submit());
-        this.daysSubmit.cancel().click(()=>thisclass.cancel());
+        this.daysSubmit.submit().click(()=>this.submit());
+        this.daysSubmit.cancel().click(()=>this.cancel());
         this.addDayClick = this.addDay.click();
         this.addDayClick.click(()=>thisclass.newDay());
         this.days_array = [];
         this.id = 0;
+        this.flagNewDay = false;
     }
 
-    update(days, id){
+    update(days, output_name_id){
         this.empty();
         this.days = days;
         this.daysSubmit.hide();
-        this.id = id-1;
+        this.id = output_name_id - 1;
+        this.days_array = []; 
         if(this.days[this.id].length == 0){
-            this.errorMsg.fadeIn();
-            this.addDay.show();
-            this.days = [];
+            this.checkDOM();
         } else {
             this.errorMsg.fadeOut();
             for (let index = 0; index < this.days[this.id].length; index++) {
@@ -38,30 +38,35 @@ export default class DaysBundle {
                 this.days_array[index].show();
                 console.log(this.days_array);
             }
+            this.checkDOM();
+        }
+    }
+
+    checkDOM(){
+        if(this.days_array.length == 0){
+            this.errorMsg.fadeIn();
+            this.addDay.show();
+        } else {
             if(this.days_array[0].day.day == 7){
                 this.addDay.hide();
+                this.errorMsg.hide();
             } else {
                 this.addDay.show();
             }
         }
-    }
 
+    }
     newDay(){
         let output = null;
-        this.id += 1;
         let newDay = new Day(null, this.config.days_names);
-        this.days.push(newDay);
+        this.days_array.push(newDay);
+        console.log('new day: ',this.days_array);
         newDay.show();
         newDay.enable();
         this.errorMsg.hide();
         this.addDay.hide();
         this.daysSubmit.show();
-    }
-
-    enableDays(){
-        for (let i = 0; i < this.days.length; i++) {
-            this.days[i].enable();
-        }
+        this.flagNewDay = true;
     }
 
     empty(){
@@ -77,34 +82,33 @@ export default class DaysBundle {
 
     submit(){
         let func;
-        let data = JSON.stringify($('#program-form').serialize()); //.serializeArray()
-        console.log(data);
-        if(this.days.length == 1){
+        let form = $('#program-form').serialize(); //.serializeArray()
+        console.log(form);
+        if(this.flagNewDay){
             func = 'newDay';
+            this.flagNewDay = false;
         } else {
             func = 'updateDay';
         }
-        // fetch(func, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //       },
-        //     body: data
-        // })
-        // .then(data => data.text())
-        // .then(json =>  {
-        //     // getOutputs(program_id, out_num); 
-        //     console.log(json);
-        // })
-        // .catch(function(err) {
-        //     // popUp(err);
-        //     console.log("Update or add Output: ", err);
-        // });
+        $.post(func, form)
+        .done((day_created)=>{
+            let length = this.days_array.length;
+            console.log(this.days_array);
+            console.log('length:', length);
+            console.log(this.days_array[length - 1]);//.update(day_created);
+            this.days_array[length - 1].update(day_created, this.config.days_names);
+            this.days_array[length - 1].disable();
+            this.success();
+        })
+        .fail((err)=>console.log('Error al agregar dia: ',err))
     }
     cancel(){
-        this.days.pop();
-        this.update(this.output);
-        this.flag_new_day = false;
+        this.days_array.pop();
+        this.daysSubmit.hide();
+    }
+    success(){
+        this.checkDOM();
+        this.daysSubmit.hide();
     }
     
 

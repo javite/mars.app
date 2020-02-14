@@ -17,11 +17,14 @@ export default class ProgramBundle {
         </div>
     </div>
     `;
-    naction;
-    constructor(config){
+    action;
+    programs;
+    program_id;
+
+    constructor(device_id, config){
         let thisclass = this;
+        this.config = config;
         $('#program-form').append(this.content);
-        $('#program').change(()=>thisclass.setValue($('#program').val()));//eventor de cambio en el selector 
         /*MENU DE ICONOS NEW, EDIT, ERASE PROGRAM */
         this.iconProgramBundle = new IconProgramBundle();  
         this.iconProgramBundle.newEvent().click(()=>thisclass.newProgram());
@@ -29,24 +32,43 @@ export default class ProgramBundle {
         this.iconProgramBundle.editEvent().click(()=>thisclass.editProgram());
         /*FORM NEW/MODIFY NAME */
         this.formEdit = new newProgramForm();
-        this.formEdit.accept().click(()=>this.updateProgram());//
+        this.formEdit.accept().click(()=>this.updateProgram());
         this.formEdit.cancel().click(()=>this.endEditProgram());
-        /*MENU OUTPUT */
-        this.outBundle = new OutBundle(config);
-        this.outBundle.show();
+
+        let getProgram = this.getPrograms(device_id);// pide los programs a la BD.
+        getProgram.then(json => {
+            this.programs = json;
+            console.log('programs: ',this.programs);
+            if(this.programs.length == 0){
+                this.showError('No hay programas creados aun');
+            } else {
+            /*MENU OUTPUT */
+                this.outBundle = new OutBundle(this.programs[0], this.config); //si hay programas crea las output
+                this.update();
+            }
+        })
+        // .catch((err)=>console.log(err));
+
+        let program_id_ref = $('#program_id');
+        this.selector = $('#program');
+        this.selector.change(()=>{  //selector de salida
+            this.value = this.selector.val();
+            program_id_ref.val(this.programs[this.value].id);
+            this.program_id = program_id_ref.val();
+            console.log('program_id: ', this.program_id);
+            this.outBundle.newProgram(this.program_id);
+        })
 
     }
 
-    update(programs, outputs){
-        this.programs = programs;
-        this.outputs = outputs;
+    update(){
         let thisclass = this;
         let selected;
         let firstTime = false;
         if(typeof this.value === "undefined"){
             firstTime = true;
         }
-        this.selector = $('#program');
+
         this.selector.html('');
         for (let index = 0; index < this.programs.length; index++) {
             if(firstTime){
@@ -59,12 +81,18 @@ export default class ProgramBundle {
             }
             this.selector.append(`<option value="${index}" ${selected}>${this.programs[index].name}</option>`); //${programs[index].id}
         }
-        this.program_id = $('#program_id');
-        this.program_id.val(this.programs[this.value].id); //guarda el id del programa
-        this.selector.val(thisclass.value); // actualiza el selector con el valor de Value. Se guarda el index de programas.
+         //guarda el id del programa
+
         this.iconProgramBundle.update(this.programs);
         this.iconProgramBundle.show();
-        this.outBundle.update(this.outputs);//acualiza select de salidas
+        // this.outBundle.update();//acualiza select de salidas
+
+        this.show();
+    }
+    getPrograms(device_id){
+        return fetch(`getPrograms/${device_id}`)//todos los programas
+        .then(data =>data.json())
+        .catch(error => console.error(error))
     }
     newProgram(){
         this.hide();
@@ -170,12 +198,13 @@ export default class ProgramBundle {
 
     show(){
         $('#program-cont').slideDown();
+        console.log('show prog bund');
     }
 
     setValue(val){
         this.value = val;
-        $('#program_id').val(this.programs[this.value].id);
     }
+
     getValue(){
         return this.programs[this.value].id;
     }

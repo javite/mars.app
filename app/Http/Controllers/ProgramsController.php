@@ -12,7 +12,7 @@ class ProgramsController extends Controller
     public function getPrograms($device_id ){
         $programs = Program::where("device_id","=",$device_id )->get();
 
-        return json_encode($programs);
+        return $programs; //lo devuelve en json
     }
 
     public function saveProgram(Request $data){

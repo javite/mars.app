@@ -1,8 +1,8 @@
-import DaysSubmit from './days-submit.js';
+import IconOutputBundle from './icon-bundle-output.js';
 
 export default class Day {
         content = `
-        <div class="day-bundle col-sm-6 day" style='display:none;' key="0">
+        <div class="day-bundle col-sm-6 day" style='display:none;' id='day' key="0">
             <div class="day-selector-bundle">
                 <label class="label-day-selector label" for="days">Dia</label>
                 <br>
@@ -23,23 +23,19 @@ export default class Day {
         id ;
     constructor(day, days_names){
         let day_selected;
-        let newObject = false;
         this.day = day;
          $('#days-bundle').prepend(this.content);
 
         if(!this.isEmpty(day)){
-            console.log('no empty day');
             this.id = this.day.id;
             $(`#hour_on`).val(`${day.hour_on}`);
             $(`#hour_off`).val(`${day.hour_off}`);
             $(`.day[key=0]`).attr('key',`${this.id}`);
             day_selected = this.day.day;
-            newObject = false;
         } else {
             console.log('empty day');
             this.id = 0;
             day_selected = 0;
-            newObject = true;
         }
 
         let selected = '';
@@ -53,11 +49,19 @@ export default class Day {
         }
         // let string = ;
         this.self = $(`.day[key=${this.id}]`);
+        /*ICONO EDIT */
+        this.iconEdit = new IconOutputBundle();
+        this.iconEdit.click().click(()=>console.log('boton edit'));//agregar que hace cuando se presiona el boton edit.
 
     }
 
-    update(){
-
+    update(day){
+        this.day = day;
+        this.id = this.day.id;
+        $(`#hour_on`).val(`${this.day.hour_on}`);
+        $(`#hour_off`).val(`${this.day.hour_off}`);
+        $(`.day[key=0]`).attr('key',`${this.id}`);
+        $(`#select`).val(this.day.day);
     }
 
     hide(){

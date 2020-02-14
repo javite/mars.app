@@ -1,17 +1,15 @@
-import IconOutputBundle from './icon-bundle-output.js';
 import DaysBundle from './days-bundle.js';
 
 
 export default class OutBundle {
-    value;
+    id_selected;
     content = `
     <div class="out-bundle border_1" style='display:none;'>
         <div class="out-selector-bundle mb-3">
             <div class="out-label-selector-bundle d-flex justify-content-between">
                 <label class="label-out-selector label" for="out">Salida</label>
             </div>
-            <input type="hidden" id="output_id" name="output_id" value="">
-            <select class="out-selector form-control" name="out" id="out"></select>
+            <select class="out-selector form-control" name="output_id" id="out"></select>
         </div>
     </div>
     `;
@@ -19,37 +17,65 @@ export default class OutBundle {
     eventEdit;
     output;
     days;
-    constructor(config){
-        let thisclass = this;
+
+    constructor(program, config){
+        this.program = program;
+        this.firstTime = true;
         this.config = config;
+        this.outs_names = this.config.getOutNames();
         $('#program-form').append(this.content);
-        this.iconEdit = new IconOutputBundle();
-        this.eventEdit = this.iconEdit.click();//guarda el evento click del boton edit.
-        $('#out').change(()=>thisclass.setValue($('#out').val())); //actualiza select de outputs
+        
+        /*CONTENEDOR DIAS*/
         this.daysBundle = new DaysBundle(this.config);
         this.daysBundle.show();
-        // this.eventEdit.click(()=>console.log(this.iconEdit.getState()));//agregar que hace cuando se presiona el boton edit.
-        this.outs_names = this.config.getOutNames();
-        this.firstTime = true;
+        
+         
+        $('#out').change(()=>{  //selector de salida
+            this.id_selected = $('#out').val();
+            console.log('out id selected: ', this.id_selected);
+            this.update();
+        })
+
+        this.getOutputs(this.program.id);
+
     }
 
-    update(outputs){
-        this.outputs = outputs.outputs;
-        this.days = outputs.days;
+    getOutputs(program_id){
+        fetch(`/getOutputs/${program_id}`)
+            .then(data => data.json())
+            .then(json => {
+                console.log('outputs', json);
+                this.outputs = json.outputs;
+                this.days = json.days;
+                this.id_selected = this.outputs[0].id;
+                this.update();
+                this.show();
+            })
+            .catch(error => console.error(error))
+    }
+
+    newProgram(program_id){
+        this.program_id = program_id;
+        console.log(this.program_id);
+        this.getOutputs(this.program_id);
+    }
+
+    update(){
         let selected = '';
         let selector = $('#out');
         selector.html('');
         for (let index = 0; index < this.outputs.length; index++) {
             if(this.firstTime && index == 0){
                 selected = 'selected';
-                this.value = this.outputs[0].id;
+                // this.id_selected = this.outputs[0].id;
             } else {
                 selected = '';
             } 
             selector.append(`<option value="${this.outputs[index].id}" ${selected} >${this.outputs[index].output_name}</option>`);
         }
-        selector.val(this.value);
-        this.output = this.outputs.filter(output=>output.id == this.value)[0];
+        selector.val(this.id_selected);
+        this.output = this.outputs.filter(output=>output.id == this.id_selected)[0];
+        console.log(this.id_selected)
         this.daysBundle.update(this.days, this.output.outputs_names_id);
         if(this.config.isEmpty(this.days)){
             this.iconEdit.hide();
@@ -58,11 +84,11 @@ export default class OutBundle {
         }  
         console.log('days:',this.days);
         this.firstTime = false;
+        this.show();
     }
 
     setValue(val){
-        this.value = val;
-        $('#output_id').val(this.value);
+        this.id_selected = val;
     }
     
     change(){

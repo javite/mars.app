@@ -29,68 +29,71 @@ $(document).ready(function(){
         config.setDaysNames(days_names);
         config.setOutNames(outs_names);
         console.log('Days names',outs_names);
-        createDOM();
-        let getProgram = getPrograms();
-        getProgram.then(json => {
-            programs = json;
-            console.log('programs: ',programs);
-            if(isEmpty(programs)){
-                programBundle.showError('No hay programas creados aun');
-            }else {
-                let _getOutputs = getOutputs(programs[0].id);
-                _getOutputs.then(json => {
-                    outputs = json;
-                    console.log('outputs', outputs.outputs);
-                    updateDOM(programs, outputs);
-                })
-            }
-        });
+        let programBundle = new ProgramBundle(device_id, config);
+
+        // let getProgram = getPrograms();
+        // getProgram.then(json => {
+        //     programs = json;
+        //     console.log('programs: ',programs);
+        //     if(isEmpty(programs)){
+        //         programBundle.showError('No hay programas creados aun');
+        //     }else {
+        //         let _getOutputs = getOutputs(programs[0].id);
+        //         _getOutputs.then(json => {
+        //             outputs = json;
+        //             console.log('outputs', outputs.outputs);
+        //             updateDOM(programs, outputs);
+        //         })
+        //     }
+        // });
     });
 });
 
-function createDOM() {
-    programBundle = new ProgramBundle(config);
-    let programSelector = programBundle.change();
-    programSelector.change(function(){  //selector de salida
-        out_num = 0;
-        program_id = programBundle.getValue();
-        console.log('program_id: ',program_id);
-        let _getOutputs = getOutputs(program_id);
-        _getOutputs.then(json => {
-            outputs = json;
-            console.log('outputs', outputs);
-            updateDOM(programs, outputs);
-        })
-    })
-    let outputSelector = programBundle.outSelector();
-    outputSelector.change(function(){  //selector de salida
-        out_num = $(this).val();
-        console.log('out selected: ',out_num);
-        updateDOM(programs, outputs);
-    })
+// function createDOM() {
+//     programBundle = new ProgramBundle(config);
+    // let programSelector = programBundle.change();
+    // programSelector.change(function(){  //selector de salida
+    //     out_num = 0;
+    //     program_id = programBundle.getValue();
+    //     console.log('program_id: ',program_id);
+    //     let _getOutputs = getOutputs(program_id);
+    //     _getOutputs.then(json => {
+    //         outputs = json;
+    //         console.log('outputs', outputs);
+    //         updateDOM(programs, outputs);
+    //     })
+    // })
+    // let outputSelector = programBundle.outSelector();
+    // outputSelector.change(function(){  //selector de salida
+    //     out_num = $(this).val();
+    //     console.log('out selected: ',out_num);
+    //     updateDOM(programs, outputs);
+    // })
     
-    programBundle.show();
-}
+    // programBundle.show();
+// }
 function getNames(){
     return fetch("getDaysNames")
     .then(data =>data.json())
     .catch(error => console.error(error))
 }
-function getPrograms(){
-    return fetch(`getPrograms/${device_id}`)//todos los programas
-    .then(data =>data.json())
-    .catch(error => console.error(error))
-}
-function updateDOM(_programs, _outputs) {
-    console.log('outputs update dom',_outputs);
-    programBundle.update(_programs, _outputs); //actualiza el select
-}
+// function updateDOM(_programs, _outputs) {
+//     console.log('outputs update dom',_outputs);
+//     programBundle.update(_programs, _outputs); //actualiza el select
+// }
 
-function getOutputs(_program_id){
-    return fetch(`/getOutputs/${_program_id}`)
-    .then(data => data.json())
-    .catch(error => console.error(error))
-}
+// function getPrograms(){
+//     return fetch(`getPrograms/${device_id}`)//todos los programas
+//     .then(data =>data.json())
+//     .catch(error => console.error(error))
+// }
+
+
+// function getOutputs(_program_id){
+//     return fetch(`/getOutputs/${_program_id}`)
+//     .then(data => data.json())
+//     .catch(error => console.error(error))
+// }
 // function getOutputs(_program_id, out_num = 0){
 //     $.get("api/getOutputs.php","program_id=" + _program_id, function(data){
 //         outputs = JSON.parse(data);
