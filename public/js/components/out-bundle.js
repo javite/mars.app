@@ -78,9 +78,9 @@ export default class OutBundle {
         console.log(this.id_selected)
         this.daysBundle.update(this.days, this.output.outputs_names_id);
         if(this.config.isEmpty(this.days)){
-            this.iconEdit.hide();
+            // this.iconEdit.hide();
         } else {
-            this.iconEdit.show();
+            // this.iconEdit.show();
         }  
         console.log('days:',this.days);
         this.firstTime = false;

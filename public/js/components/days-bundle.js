@@ -54,8 +54,8 @@ export default class DaysBundle {
                 this.addDay.show();
             }
         }
-
     }
+
     newDay(){
         let output = null;
         let newDay = new Day(null, this.config.days_names);
@@ -72,6 +72,7 @@ export default class DaysBundle {
     empty(){
         $('.day').remove();
     }
+
     hide(){
         $('#days-bundle').slideUp();
     }
@@ -102,14 +103,15 @@ export default class DaysBundle {
         })
         .fail((err)=>console.log('Error al agregar dia: ',err))
     }
+
     cancel(){
         this.days_array.pop();
         this.daysSubmit.hide();
     }
+
     success(){
         this.checkDOM();
         this.daysSubmit.hide();
     }
     
-
 }

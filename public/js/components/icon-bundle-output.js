@@ -1,16 +1,21 @@
 export default class IconOutputBundle {
     content = `
     <div class="icon-bundle-output">
-        <img src="./images/edit_2.svg" id="btn-edit-day" class="icon-out" style="display:none" role="button" aria-pressed="true">
+        <img src="./images/edit_2.svg" id="btn-edit-day" class="icon-out" style="display:none" role="button" aria-pressed="false">
     </div>
     `;
     clickState = false;
-    clickEvent;
+    self;
     
     constructor(){
-        let thisclass = this;
-        $('.day').prepend(this.content);
-        this.clickEvent = $('#btn-edit-day').click(()=>this.click());
+        $('#day').prepend(this.content);
+        this.self = $('#btn-edit-day');
+        this.self.click(()=>this.click());
+        
+    }
+
+    clickEvent(){
+        return this.self;
     }
 
     update(){
@@ -18,21 +23,21 @@ export default class IconOutputBundle {
     }
 
     hide(){
-        $('#btn-edit-day').slideUp();
-        
+        this.self.slideUp();
     }
 
     show(){
-        $('#btn-edit-day').slideDown();
+        this.self.slideDown();
     }
 
     click(){
-        let pressed = ($('#btn-edit-day').attr("aria-pressed") === "true");
-        $('#btn-edit-day').attr("aria-pressed",!pressed);
+        let pressed = (this.self.attr("aria-pressed") === "true");
+        this.self.attr("aria-pressed",!pressed);
         this.clickState = !pressed;
-        return this.clickEvent;
     }
+
     getState(){
         return this.clickState;
     }
+
 }

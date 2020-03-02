@@ -21,6 +21,7 @@ export default class Day {
             </div>
         </div>`;
         id ;
+        
     constructor(day, days_names){
         let day_selected;
         this.day = day;
@@ -47,12 +48,19 @@ export default class Day {
             }
             $(`#select`).append(`<option value="${i}" ${selected}>${days_names[i]}</option>`)
         }
-        // let string = ;
         this.self = $(`.day[key=${this.id}]`);
+
         /*ICONO EDIT */
         this.iconEdit = new IconOutputBundle();
-        this.iconEdit.click().click(()=>console.log('boton edit'));//agregar que hace cuando se presiona el boton edit.
-
+        this.iconEdit.clickEvent().click(()=>{
+            if(this.iconEdit.getState()){
+                this.enable();
+            } else{
+                this.disable();
+            }
+            
+        });
+        this.iconEdit.show();
     }
 
     update(day){
@@ -62,10 +70,13 @@ export default class Day {
         $(`#hour_off`).val(`${this.day.hour_off}`);
         $(`.day[key=0]`).attr('key',`${this.id}`);
         $(`#select`).val(this.day.day);
+        this.self = $(`.day[key=${this.id}]`);
+        console.log('upadte day')
+        this.iconEdit.show();
     }
 
     hide(){
-        this.self .slideUp();
+        this.self.slideUp();
     }
 
     show(){
@@ -76,6 +87,7 @@ export default class Day {
         $('#program-error').text(errorText);
         $('#program-error').fadeIn();//No hay programas creados aun
     }
+
     isEmpty(obj) {
         for(var key in obj) {
             if(obj.hasOwnProperty(key))
@@ -83,10 +95,12 @@ export default class Day {
         }
         return true;
     }
+
     enable(){
         this.self.find("input").prop("disabled", false);
         this.self.find("select").prop("disabled", false);
     }
+
     disable(){
         this.self.find("input").prop("disabled", true);
         this.self.find("select").prop("disabled", true);
