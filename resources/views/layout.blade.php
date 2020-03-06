@@ -35,7 +35,7 @@
 <div class="container-fluid height-bar"></div>
 <footer class="footer container-fluid border-top">
     <div class="container  d-flex justify-content-around">
-        <a class="menu-icon d-flex flex-column justify-content-center" href="main">
+        <a class="menu-icon d-flex flex-column justify-content-center" href="home">
             <img src="images/isologo_grower-lab.svg" class="menu-icon-img"alt="">
             <p class="text-icon">inicio</p>
         </a>
@@ -47,7 +47,7 @@
             <img src="images/calendar.svg" class="menu-icon-img"alt="">
             <p class="text-icon">programas</p>
         </a>
-        <a class="menu-icon d-flex flex-column justify-content-center" href="#">
+        <a class="menu-icon d-flex flex-column justify-content-center" href="config">
             <img src="images/settings.svg" class="menu-icon-img"alt="">
             <p class="text-icon">config.</p>
         </a>

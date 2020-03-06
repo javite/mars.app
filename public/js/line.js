@@ -125,10 +125,10 @@ function updateDataChar() {
     if(device_id == null){
         error("no hay device id");
     } else {
-
-    let json_string = '{"table":"measurements", "limit":"50","device_id":"'+ device_id +'", "date":"' + date_chart + ' 00:00:00"}';
-    console.log("json_get: "+json_string);
-    fetch('api/querys.php?x=' + json_string)
+    // let json_string = "device_id":"'+ device_id +'", "date":"' + date_chart + ' 00:00:00"}';
+    let url = `getMeasurements?device_id=${device_id}&date=${date_chart} 00:00:00`;
+    console.log(url);
+    fetch(url)
         .then(response => {
             if(response.status != 200){             
                 return null;
@@ -137,6 +137,7 @@ function updateDataChar() {
             }
         })
         .then(response => {
+            console.error(response);
             if (response.length == 0){
                 $("#alerta").show();
             } else {

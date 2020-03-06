@@ -49,6 +49,13 @@ Route::post('/deleteDay',"DaysController@deleteDay");
 Route::post('/newDay',"DaysController@newDay");
 Route::get('/getDaysNames',"DaysController@getDaysNames");
 
+/*MEASUREMENTS*/
+Route::get('/getMeasurements',"MeasurementsController@getMeasurements");
+Route::get('/getLastMeasurement',"MeasurementsController@getLastMeasurement");
+Route::post('/saveMeasurements',"MeasurementsController@saveMeasurements");
+Route::post('/deleteMeasurements',"MeasurementsController@deleteMeasurements");
+Route::post('/newMeasurements',"MeasurementsController@newMeasurements");
+
 /*SENSORS*/
 
 

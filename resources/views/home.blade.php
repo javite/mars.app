@@ -1,24 +1,3 @@
-<?php
-// require_once("init.php");
-
-// if(!$authentication->isLogged()){
-//     header("Location:login.php");exit;
-// }
-// $temperature = "";
-// $humidity = "";
-// $user = $_SESSION["user_email"]; //TODO guardar en cookies el user _id
-// $devices = json_decode($db->getDevices($_SESSION["user_ID"])); //devuelve los devices de ese usuario
-// $device_selected;
-// if($_GET){
-//     $device_selected = $_GET["device_id"];
-// } else {
-//     $device_selected = $devices[0]->id;
-// }
-// setcookie("device_id", $device_selected);
-// $_SESSION["device_id"] = $device_selected;
-// $measurement = $db->getLastMeasurement($device_selected);
-
-?>
 @extends('layout')
 @section('css')
 <link rel="stylesheet" type="text/css" media="screen" href="/css/style_main.css" />
