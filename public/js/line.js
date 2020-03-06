@@ -122,11 +122,12 @@ function updateDataChar() {
 
     let date_chart = $("#date_chart_temp_hum").val();
     let device_id = getCookie('device_id');
+    device_id = 6;
     if(device_id == null){
         error("no hay device id");
     } else {
     // let json_string = "device_id":"'+ device_id +'", "date":"' + date_chart + ' 00:00:00"}';
-    let url = `getMeasurements?device_id=${device_id}&date=${date_chart} 00:00:00`;
+    let url = `getMeasurements?device_id=${device_id}&date=${date_chart}%200:00:00`;
     console.log(url);
     fetch(url)
         .then(response => {
@@ -137,7 +138,7 @@ function updateDataChar() {
             }
         })
         .then(response => {
-            console.error(response);
+            console.log(response);
             if (response.length == 0){
                 $("#alerta").show();
             } else {

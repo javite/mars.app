@@ -14,14 +14,11 @@ class MeasurementsController extends Controller
       }
     
     public function getMeasurements() {
-        $obj = json_decode($_GET["x"], false);
-        return $obj;
-        $date_selected = strtotime($obj->date);
+        $date_selected = strtotime($_GET['date']);
         $date_plus_1 = strtotime("+1 day", $date_selected);
         $today = date('Y-m-d H:i:s',$date_selected);
         $tomorrow = date('Y-m-d H:i:s',$date_plus_1);
-        $device_id = $obj->device_id;
-
+        $device_id = $_GET['device_id'];
         $measurements = Measurement::whereBetween('created_at',[$today, $tomorrow])->where('device_id','=', $device_id)->orderBy('id','desc')->get();
         return $measurements;
 
