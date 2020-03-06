@@ -21,7 +21,9 @@ class DaysController extends Controller
         $day_ = $data["day"];
         $hour_on = $data["hour_on"];
         $hour_off = $data["hour_off"];
+        
         $day = Day::find($day_id);
+
         if ($day->id == null) {
             $response = 0;
         } else {
@@ -29,7 +31,7 @@ class DaysController extends Controller
             $day->hour_on = $hour_on;
             $day->hour_off = $hour_off ;
             $day->save();
-            $response = $day->id;
+            $response = $day;
         }
     
         return $response;

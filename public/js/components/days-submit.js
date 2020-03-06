@@ -5,8 +5,13 @@ export default class DaysSubmit{
                 <button type="button" class="btn btn-danger" id="cancel-day">Cancelar</button>
             </div>`;
 
-    constructor(){
-        $('#buttons-days-container').append(this.content);//botones de aceptar y cancelar en editar dias.
+    constructor(parent){
+        this.parent = parent;
+        this.parent.append(this.content);//botones de aceptar y cancelar en editar dias.
+    }
+
+    update(parent){
+        this.parent = parent;
     }
 
     hide(){
