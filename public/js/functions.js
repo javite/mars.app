@@ -1,16 +1,4 @@
 
-$(document).ready(function(){
-    function notBlur(){
-        $("#name-grower").css('filter','blur(0px)');
-     };
-     function blur(){
-        $("#name-grower").css('filter','blur(1px)');
-     };
-    window.setTimeout( blur, 1000 );     
-    window.setTimeout( notBlur, 3000 );  
-    console.log("fin blur");
-
-});
 
 function getCookie(cname) {
     var name = cname + "=";

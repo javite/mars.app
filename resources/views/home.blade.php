@@ -3,25 +3,13 @@
 <link rel="stylesheet" type="text/css" media="screen" href="/css/style_main.css" />
 @endsection
 @section('js')
-<script src="/js/moment.js"></script>
-<script src="/js/chart.js"></script>
 <script src="/js/functions.js"></script>
+<script src="/js/home.js" type="module"></script>
 @endsection
    
 @section('content')
     <div class="background-image"></div>
-    <div class="container-fluid">
-            <form form action="main.php" method="get" class="form devices-list">
-                <div class="form-group mx-sm-3">
-                    <input type="hidden" name="device_id" value="0" >
-                    <label for="devices">Growers</label>
-                        <select name="device_id" class="mdb-select form-control md-form colorful-select dropdown-primary">
-                            <option value="1" "selected">Grower-1</option>
-                        </select>
-                    <br>
-                    <button type="submit" class="btn btn-primary" value="submit">Seleccionar</button>
-                </div>
-            </form>
+    <div class="container-fluid" id="main-container">
         <div class="card-deck">
             <div class="card shadow bg-light text-center">
                 <div class="card-body">
@@ -104,6 +92,6 @@
                     <a href="#" class="btn btn-secondary mb-2">Apagar</a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 @endsection

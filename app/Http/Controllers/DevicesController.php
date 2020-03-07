@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Device;
 
 class DevicesController extends Controller
 {
-    public function getDevices($user_id){
+    public function getDevices(){
+        $user = Auth::user();
+        $user_id = $user->id;
         $devices = Device::where("user_id","=",$user_id )->get();
 
-        return json_encode($devices);
+        return $devices;
     }
 
     public function saveDevice(Request $data){

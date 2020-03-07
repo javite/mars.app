@@ -1,11 +1,11 @@
 import ProgramBundle from './components/program-bundle.js';
+import ProgramBundle from './components/program-bundle.js';
 import Config from './components/config.js';
 
 var outs_names;
 var days_names;
 var device_id;
 var config;
-
 
 $(document).ready(function(){
     device_id = 6;//getCookie('device_id');
