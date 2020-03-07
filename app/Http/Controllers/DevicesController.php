@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Device;
 
@@ -40,11 +41,13 @@ class DevicesController extends Controller
       public function newDevice(Request $data){
         $user_id = $data["user_id"];
         $device_name = $data["device_name"];
+
         $newDevice = new Device();
         $newDevice->user_id  = $user_id;
         $newDevice->name = $device_name;
         $newDevice->model = "Grower-full";
         $newDevice->version = "V1.0.0";
+        $newDevice->api_token = Str::random(60);
         $newDevice->save();
         return $newDevice->id;
       }

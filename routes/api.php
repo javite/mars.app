@@ -17,6 +17,8 @@ Route::get('/getPrograms/{device_id}',"ProgramsController@getPrograms");
 Route::get('/getOutputs/{program_id}',"OutputsController@getOutputs");
 Route::get('/getDays/{output_id}',"DaysController@getDays");
 
+Route::post('/newMeasurement',"MeasurementsController@newMeasurement");
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
