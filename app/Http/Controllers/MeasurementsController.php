@@ -9,9 +9,14 @@ use App\Device;
 
 class MeasurementsController extends Controller
 {
-    public function getLastMeasurement() {
-        $measurement = Measurement::latest()->first();
-        return $measurement;
+    public function getLastMeasurement($device_id) {
+        $measurement = Measurement::where('device_id','=',$device_id)->latest()->first();
+        $tmp = (array) $measurement;
+        if(empty($tmp)){
+            return -1;
+        } else {
+            return $measurement;
+        }
       }
     
     public function getMeasurements() {

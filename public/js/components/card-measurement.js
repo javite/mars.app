@@ -1,48 +1,69 @@
 export default class cardMeasurement{
 
-    content =`  <div class="card shadow bg-light text-center">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h4 class="text-left" id="title">Temperatura</h4>
-                                <h5 class="text-left" id="sub-title">ambiente</h5>
+    constructor(measurement, type){
+        let thisClass = this;
+        let title;
+        let sub_title; 
+        let value;
+        let unit;
+        let img_card;
+        let id;
+
+        switch (type) {
+            case 0:
+                title = 'Temperatura';
+                sub_title = 'ambiente'; 
+                value = measurement.temperature;
+                unit = '°C';
+                img_card = 'images/thermometer.svg';
+                id = `temperature_${type}`;
+                break;
+            case 1:
+                title = 'Humedad';
+                sub_title = 'ambiente'; 
+                value = measurement.humidity;
+                unit = '%';
+                img_card = 'images/drop.svg';
+                id = `humidity_${type}`;
+                break;
+            case 2:
+                title = 'Humedad';
+                sub_title = 'de tierra'; 
+                value = measurement.soil_humidity_1;
+                unit = '%';
+                img_card = 'images/soil_hum.svg';
+                id = `soil_humidity_${type}`;
+                break;
+            default:
+                break;
+        }
+
+        this.content =`  <div class="card shadow bg-light text-center" id="${id}">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="text-left" id="title">${title}</h4>
+                                        <h5 class="text-left" id="sub-title">${sub_title}</h5>
+                                    </div>
+                                    <div class="card-value col">
+                                        <h3 class="card-text"><span id="value">${value}</span> <span id="unit">${unit}</span></h3>
+                                        <img src=${img_card} id="img-temp" alt="">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-value col">
-                                <h3 class="card-text" id="value">00</h3><h3 class="card-text">ºC</h3>
-                                <img src="images/thermometer.svg" id="img-temp"alt="">
+                            <div class="card-footer">
+                                <small class="text-muted text-left" >Actualizado: <span id="updated_at">${measurement.updated_at}</span></small>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted text-left" >Actualizado: <span id="updated_at">20-01-2020</span></small>
-                    </div>
-                </div>
-            `;
-
-    constructor(measurement){
-        let thisClass = this;
+                    `;
         $('#deck-measurements').append(this.content);
-        $('#value').text(measurement.temperature);
-        $('#updated_at').text(measurement.updated_at);
-        console.log(measurement);
-        
+        this.self = $(`#${id}`);
+
     }
 
-    update(){
-        this.devices = devices;
-        let selected;
-        for (let index = 0; index < devices.length; index++) {
-            if(this.firstTime){
-                this.value = 0;
-                this.firstTime = false;
-            } 
-            if(this.value == index){ 
-                selected = 'selected';
-            } else {
-                selected = '';
-            }
-            this.selector.append(`<option value="${this.devices[index].id}" ${selected}>${this.devices[index].name}</option>`); 
-        }
+    update(value, updated_at){
+        this.self.find('#value').text(value);
+        this.self.find('#updated_at').text(updated_at);
     }
 
     hide(){

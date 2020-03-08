@@ -6,15 +6,14 @@ export default class deviceSelectorForm {
                     <label for="devices">Growers</label>
                     <select name="device_id" id="device_selector" class="mdb-select form-control md-form colorful-select dropdown-primary">
                     </select>
-                    <br>
-                    <button type="submit" class="btn btn-primary" value="submit">Seleccionar</button>
+                    <p class="error" id='error-message-program' style='display: none'></p>
                 </div>
             </form>
             `;
 
     constructor(){
         let thisClass = this;
-        $('#main-container').prepend(this.content);
+        $('#home-container').prepend(this.content);
         this.selector = $('#device_selector');
         this.firstTime = true;
         this.value = 0;
@@ -38,8 +37,17 @@ export default class deviceSelectorForm {
         }
     }
 
-    hide(){
-        this.selector.slideUp();
+    event(){
+        return this.selector;
+    }
+
+    message(message){
+        $('#error-message-program').text(message);
+        $('#error-message-program').slideDown();
+    }
+
+    hideMessage(){
+        $('#error-message-program').slideUp();
     }
 
     show(){
