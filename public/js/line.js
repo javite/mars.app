@@ -122,8 +122,7 @@ function updateDataChar() {
 
     let date_chart = $("#date_chart_temp_hum").val();
     let device_id = getCookie('device_id');
-    device_id = 6;
-    let limit = 100;
+    let limit = 1000;
     if(device_id == null){
         error("no hay device id");
     } else {
