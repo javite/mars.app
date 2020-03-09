@@ -10,7 +10,7 @@ export default class HomeBundle {
             `;
 
     constructor(){
-        alert('inicio home bundle')
+
         let thisclass = this;
         this.cardArray = [];
         this.cardArrayOuput = [];
