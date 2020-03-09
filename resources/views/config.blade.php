@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-<div class="container" id="program-container">
+<div class="container" id="config-container">
     <h2>Configuracion</h2>
 </div>
 @endsection
