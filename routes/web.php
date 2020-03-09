@@ -23,6 +23,9 @@ Route::get('/stats', function () {
 Route::get('/program', function () {
     return view('program');
 });//->middleware('auth');
+Route::get('/config', function () {
+    return view('config');
+});//->middleware('auth');
 
 /*DEVICES*/
 Route::get('/getDevices',"DevicesController@getDevices");
