@@ -63,6 +63,11 @@ Route::post('/newMeasurements',"MeasurementsController@newMeasurements");
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('/service/migrate',function(){
+    Artisan::call('migrate', [
+        '--force' => true,
+    ]);
+});
 Route::get('/programList',"DevicesController@programList");
 Route::get('/outputList',"ProgramsController@outputList");
 Route::get('/debug', function () {
