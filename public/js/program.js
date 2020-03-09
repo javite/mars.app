@@ -1,5 +1,4 @@
 import ProgramBundle from './components/program-bundle.js';
-import ProgramBundle from './components/program-bundle.js';
 import Config from './components/config.js';
 
 var outs_names;
