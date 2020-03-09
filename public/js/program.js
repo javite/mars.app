@@ -7,7 +7,7 @@ var device_id;
 var config;
 
 $(document).ready(function(){
-    getCookie('device_id');
+    device_id = getCookie('device_id');
     console.log('device_id =',device_id );
     if(device_id == null){
         console.log("no hay device id");
