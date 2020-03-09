@@ -10,6 +10,7 @@ export default class HomeBundle {
             `;
 
     constructor(){
+        alert('inicio home bundle')
         let thisclass = this;
         this.cardArray = [];
         this.cardArrayOuput = [];
@@ -37,6 +38,7 @@ export default class HomeBundle {
         devices.then(data => {
             this.devices = data;
             this.device_id = this.devices[0].id;
+            setCookie('device_id', this.device_id, 1);
             DeviceSelectorForm.update(data);
             console.log('Devices: ',data);
             if(this.devices.length>0){
