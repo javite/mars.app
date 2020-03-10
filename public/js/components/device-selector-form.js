@@ -1,6 +1,6 @@
 export default class deviceSelectorForm {
 
-    content =`<form form action="main.php" method="get" class="form devices-list">
+    content =`<div class="form devices-list">
                 <div class="form-group mx-sm-3">
                     <input type="hidden" name="device_id" value="0" >
                     <label for="devices">Growers</label>
@@ -8,7 +8,7 @@ export default class deviceSelectorForm {
                     </select>
                     <p class="error" id='error-message-program' style='display: none'></p>
                 </div>
-            </form>
+            </div>
             `;
 
     constructor(){

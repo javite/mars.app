@@ -9,6 +9,5 @@
    
 @section('content')
     <div class="background-image"></div>
-    <h2>home</h2>
     <div class="container-fluid" id="home-container"></div>
 @endsection
