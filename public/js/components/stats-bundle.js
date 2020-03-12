@@ -3,11 +3,8 @@ import Graph from './graph.js';
 
 export default class StatsBundle {
 
-    content = `
-            <div class="card-deck" id="graphs"></div>
-            `;
-
     constructor(){
+        this.content = `<div class="card-deck" id="graphs"></div>`;
         this.graphsArray = [];
         this.device_id = getCookie('device_id');
         $('#stats-container').append(this.content);

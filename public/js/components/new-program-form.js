@@ -1,15 +1,15 @@
 export default class newProgramForm {
-    content =` <div class='edit-bundle' id='form-edit-program' style='display: none'>
-                <label for="program_name" id='label_program_name'>Nombre: </label>
-                <input class="form-control" type="text" id="program_name" name="program_name" value="">
-                <p class="message" id='message-program' style='display: none'></p>
-                <p class="error" id='error-message-program' style='display: none'></p>
-                <br>
-                <button type='button' class='btn btn-primary mr-2' id='accept-new-name'>Guardar</button>
-                <button type='button' class='btn btn-danger mr-2' id='cancel-new-name'>Cancelar</button>
-               </div>
-            `;
+
     constructor(){
+        this.content =` <div class='edit-bundle' id='form-edit-program' style='display: none'>
+                            <label for="program_name" id='label_program_name'>Nombre: </label>
+                            <input class="form-control" type="text" id="program_name" name="program_name" value="">
+                            <p class="message" id='message-program' style='display: none'></p>
+                            <p class="error" id='error-message-program' style='display: none'></p>
+                            <br>
+                            <button type='button' class='btn btn-primary mr-2' id='accept-new-name'>Guardar</button>
+                            <button type='button' class='btn btn-danger mr-2' id='cancel-new-name'>Cancelar</button>
+                        </div>`;
         let thisClass = this;
         $('#program-selector-bundle').append(this.content);
         

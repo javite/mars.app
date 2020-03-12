@@ -1,12 +1,10 @@
 export default class IconProgramBundle {
-    content = `
-    <div class="icon-bundle-program" style='display:none;'>
-        <img src="./images/new.svg" id="btn-new-program" class="icon-out" style="" role="button" >
-        <img src="./images/edit_2.svg" id="btn-edit-program" class="icon-out" style="" role="button" >
-        <img src="./images/bin.svg" id="btn-erase-program" class="icon-out" style="" role="button" >
-    </div>
-    `;
     constructor(){
+        this.content = `<div class="icon-bundle-program" style='display:none;'>
+                            <img src="./images/new.svg" id="btn-new-program" class="icon-out" style="" role="button" >
+                            <img src="./images/edit_2.svg" id="btn-edit-program" class="icon-out" style="" role="button" >
+                            <img src="./images/bin.svg" id="btn-erase-program" class="icon-out" style="" role="button" >
+                        </div>`;
         $('#program-selector-bundle').prepend(this.content);
         // $('#btn-new-program').click(()=>newProgram());//onclick="newProgram()"
     }

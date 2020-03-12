@@ -1,17 +1,15 @@
 export default class deviceSelectorForm {
 
-    content =`<div class="form devices-list">
-                <div class="form-group mx-sm-3">
-                    <input type="hidden" name="device_id" value="0" >
-                    <label for="devices">Growers</label>
-                    <select name="device_id" id="device_selector" class="mdb-select form-control md-form colorful-select dropdown-primary">
-                    </select>
-                    <p class="error" id='error-message-program' style='display: none'></p>
-                </div>
-            </div>
-            `;
-
     constructor(){
+        this.content =`<div class="form devices-list">
+                            <div class="form-group mx-sm-3">
+                                <input type="hidden" name="device_id" value="0" >
+                                <label for="devices">Growers</label>
+                                <select name="device_id" id="device_selector" class="mdb-select form-control md-form colorful-select dropdown-primary">
+                                </select>
+                                <p class="error" id='error-message-program' style='display: none'></p>
+                            </div>
+                        </div>`;
         let thisClass = this;
         $('#home-container').prepend(this.content);
         this.selector = $('#device_selector');

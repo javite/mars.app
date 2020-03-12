@@ -1,7 +1,8 @@
 
 export default class Graph {
-        content = `
-                    <div class="card shadow bg-light mb-3 text-center">
+        
+    constructor(){
+        this.content = `<div class="card shadow bg-light mb-3 text-center">
                             <h5 class="card-header" id="titulo">Historial de Temperatura y Humedad ambiente</h5>
                             <div class="card-body">
                                 <div class="chart-container">
@@ -26,11 +27,7 @@ export default class Graph {
                                 <small class="text-muted">Actualizado: TODO</small>
                             </div>
                     </div>`;
-        id ;
-        
-    constructor(){
         $('#graphs').append(this.content);
-
     }
 
     update(){

@@ -3,25 +3,23 @@ import newProgramForm from './new-program-form.js';
 import OutBundle from './out-bundle.js';
 
 export default class ProgramBundle {
-    value;
-    content = `
-    <div class="program-selector-bundle border_1" id="program-selector-bundle">
-        <div id='program-cont' style='display:none;'>
-            <div class="program-label-selector-bundle ">
-                <label class="label-program-selector label" for="out">Programas</label>
-            </div>
-            <select class="program-selector form-control" name="program" id="program"></select>
-            <input type="hidden" id="program_id" name="program_id" value="">
-            <input type="hidden" id="device_id" name="device_id" value="6">
-            <div class='error' id="program-error"style='display:none;'></div>
-        </div>
-    </div>
-    `;
-    action;
-    programs;
-    program_id;
 
     constructor(device_id, config){
+        this.value;
+        this.content = `<div class="program-selector-bundle border_1" id="program-selector-bundle">
+                            <div id='program-cont' style='display:none;'>
+                                <div class="program-label-selector-bundle ">
+                                    <label class="label-program-selector label" for="out">Programas</label>
+                                </div>
+                                <select class="program-selector form-control" name="program" id="program"></select>
+                                <input type="hidden" id="program_id" name="program_id" value="">
+                                <input type="hidden" id="device_id" name="device_id" value="6">
+                                <div class='error' id="program-error"style='display:none;'></div>
+                            </div>
+                        </div>`;
+        this.action;
+        this.programs;
+        this.program_id;
         let thisclass = this;
         this.config = config;
         $('#program-form').append(this.content);
