@@ -1,14 +1,12 @@
 export default class IconOutputBundle {
-    content = `
-    <div class="icon-bundle-output" id="icon-bundle-output" style="display:none" >
-        <img src="./images/edit_2.svg" id="btn-edit-day" class="icon-out" role="button" aria-pressed="false">
-        <img src="./images/bin.svg" id="btn-erase-day" class="icon-out" role="button" >
-    </div>
-    `;
-    clickState = false;
-    self;
-    
+
     constructor(parent){
+        this.content = `<div class="icon-bundle-output" id="icon-bundle-output" style="display:none" >
+                            <img src="./images/edit_2.svg" id="btn-edit-day" class="icon-out" role="button" aria-pressed="false">
+                            <img src="./images/bin.svg" id="btn-erase-day" class="icon-out" role="button" >
+                        </div>`;
+        this.clickState = false;
+        this.self;
         this.parent = parent;
         this.parent.prepend(this.content);
         this.self = $('#icon-bundle-output');

@@ -1,4 +1,5 @@
 export default class IconProgramBundle {
+    
     constructor(){
         this.content = `<div class="icon-bundle-program" style='display:none;'>
                             <img src="./images/new.svg" id="btn-new-program" class="icon-out" style="" role="button" >
@@ -16,6 +17,7 @@ export default class IconProgramBundle {
             this.all();
         }
     }
+
     newEvent(){
         return $('#btn-new-program');
     }

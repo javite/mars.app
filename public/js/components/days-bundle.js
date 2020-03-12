@@ -3,9 +3,10 @@ import AddDayButton from './add-day-button.js';
 
 
 export default class DaysBundle {
-    content = "<div class='row days-bundle' id='days-bundle' style='display:none;'></div>";
+    
 
     constructor(config){
+        this.content = "<div class='row days-bundle' id='days-bundle' style='display:none;'></div>";
         let thisclass = this;
         $('.out-bundle').append(this.content); 
         this.days_names = config.getDaysNames();

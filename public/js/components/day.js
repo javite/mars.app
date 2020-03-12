@@ -2,32 +2,31 @@ import IconOutputBundle from './icon-bundle-output.js';
 import DaysSubmit from './days-submit.js';
 
 export default class Day {
-        content = `
-        <div class="day-bundle col-sm-6 day border_1" style='display:none;' id='0'>
-            <input type="hidden" id="day_id" name="day_id" value=0>
-            <div class='error' id='erase-day' style='display: none'>¿Seguro que queres borrar el dia?</div>
-            <div class="day-sub-bundle">
-                <div class="day-selector-bundle">
-                    <label class="label-day-selector label" for="days">Dia</label>
-                    <br>
-                    <select class="form-control day" disabled="" name="day" id="select">
-                    </select>
-                </div>
-                <div class="row hour-bundle">
-                    <div class="col h-on-bundle">
-                        <label class="label-h-on" for="hour_on">Hora encendido</label>
-                        <input type="time" class="h-on form-control text-center time" id="hour_on" disabled="" name="hour_on" value="12:00">
-                    </div>
-                    <div class="col h-off-bundle ">
-                        <label class="label-h-off" for="hour_off">Hora apagado</label>
-                        <input type="time" class="h-off form-control text-center time" id="hour_off" disabled="" name="hour_off" value="20:00">
-                    </div>
-                </div>
-            </div>
-        </div>`;
-        id ;
         
     constructor(day, days_names){
+        this.content = `<div class="day-bundle col-sm-6 day border_1" style='display:none;' id='0'>
+                            <input type="hidden" id="day_id" name="day_id" value=0>
+                            <div class='error' id='erase-day' style='display: none'>¿Seguro que queres borrar el dia?</div>
+                            <div class="day-sub-bundle">
+                                <div class="day-selector-bundle">
+                                    <label class="label-day-selector label" for="days">Dia</label>
+                                    <br>
+                                    <select class="form-control day" disabled="" name="day" id="select">
+                                    </select>
+                                </div>
+                                <div class="row hour-bundle">
+                                    <div class="col h-on-bundle">
+                                        <label class="label-h-on" for="hour_on">Hora encendido</label>
+                                        <input type="time" class="h-on form-control text-center time" id="hour_on" disabled="" name="hour_on" value="12:00">
+                                    </div>
+                                    <div class="col h-off-bundle ">
+                                        <label class="label-h-off" for="hour_off">Hora apagado</label>
+                                        <input type="time" class="h-off form-control text-center time" id="hour_off" disabled="" name="hour_off" value="20:00">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+        this.id ;
         let thisClass = this;
         let day_selected;
         let emptyDay = true;
