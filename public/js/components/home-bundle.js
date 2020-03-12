@@ -6,7 +6,7 @@ export default class HomeBundle {
 
     constructor(){
         this.content = `<div class="card-deck" id="deck-measurements"></div>
-                    <div class="card-deck" id="deck-outputs"></div>`;
+                        <div class="card-deck" id="deck-outputs"></div>`;
         let thisclass = this;
         this.cardArray = [];
         this.cardArrayOuput = [];

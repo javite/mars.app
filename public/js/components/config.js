@@ -1,6 +1,5 @@
 export default class Config {
-    days_names;
-    out_names;
+
     constructor( ){
         this.days_names;
         this.out_names;
