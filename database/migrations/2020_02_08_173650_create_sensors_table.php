@@ -15,10 +15,13 @@ class CreateSensorsTable extends Migration
     {
         Schema::create('sensors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();;
-            $table->string('type')->nullable();;
-            $table->integer('max')->nullable();;
-            $table->integer('min')->nullable();;
+            $table->integer('device_id');
+            $table->foreign('device_id')->references('id')->on('devices');
+            $table->string('name')->nullable();
+            $table->string('type')->nullable();
+            $table->decimal('max', 8, 2)->nullable();
+            $table->decimal('min', 8, 2)->nullable();
+            $table->integer('enabled')->nullable();
             $table->timestamps();
         });
     }

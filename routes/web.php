@@ -55,9 +55,10 @@ Route::get('/getDaysNames',"DaysController@getDaysNames");
 /*MEASUREMENTS*/
 Route::get('/getMeasurements',"MeasurementsController@getMeasurements");
 Route::get('/getLastMeasurement/{device_id}',"MeasurementsController@getLastMeasurement");
+Route::get('/getSensorMeasurements',"MeasurementsController@getSensorMeasurements");
 Route::post('/saveMeasurements',"MeasurementsController@saveMeasurements");
 Route::post('/deleteMeasurements',"MeasurementsController@deleteMeasurements");
-Route::post('/newMeasurements',"MeasurementsController@newMeasurements");
+Route::post('/newMeasurement',"MeasurementsController@newMeasurement");
 
 /*SENSORS*/
 

@@ -1,9 +1,10 @@
 
 var chart_1;
 
-function createChart(){
+function createChart(id){
 
-    var ctx_line = document.getElementById('temp_chart').getContext('2d');
+    // var ctx_line = document.getElementById('temp_chart').getContext('2d');
+    var ctx_line = $('canvas').attr('id',id);
     var data_line = [0, 0, 0, 0];
     var data_line2 = [0, 0, 0, 0];
     
@@ -116,6 +117,7 @@ function createChart(){
 
         }
     });
+    return chart_1;
 };
 
 function updateDataChar() {

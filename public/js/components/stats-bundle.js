@@ -8,7 +8,8 @@ export default class StatsBundle {
         this.graphsArray = [];
         this.device_id = getCookie('device_id');
         $('#stats-container').append(this.content);
-        let graph = new Graph();
+        let graph = new Graph("Historial de Temperatura", 0, 1);
+        let graph2 = new Graph("Historial de Humedad", 1, 2);
 
     }
 

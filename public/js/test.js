@@ -11,16 +11,19 @@ $(document).ready(function(){
     console.log('test')
     $('#submit').click(() => {
         // e.preventDefault();
-        form = $('#program-form').serialize();
-        // fetch('saveProgram', {
-        //     method: 'POST',
-        //     body: form
-        // })
-        // .then(data=>data.text())
-        // .then(data=>console.log(data))
+        form = '{"device_id":6, "temperature":1, "humidity":2,"soil_humidity_1":3, "api_token":"NBNWmTq7HCA2EsGYRudgwV3RMLj0Rr3AYBY3382F7C8eT0gwGmwbZUakpL05"}';
+        // form = $('#program-form').serialize();
         console.log(form);
-        $.post('newDevice', form)
-            .done(prog_id=>console.log(prog_id));
+        fetch('api/newMeasurement', {
+            method: 'POST',
+            body: form
+        })
+        .then(data=>data.text())
+        .then(data=>console.log(data))
+        
+        // $.post('api/newMeasurement', form)
+        //     .done(prog_id=>console.log(prog_id));
+            
     })
 
 });
