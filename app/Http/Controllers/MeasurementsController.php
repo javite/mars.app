@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Measurement;
 use App\Device;
+use App\Sensor;
 
 class MeasurementsController extends Controller
 {
     public function getLastMeasurement($device_id) {
-        $measurement = Measurement::where('device_id','=',$device_id)->latest()->first();
-        $tmp = (array) $measurement;
-        if(empty($tmp)){
+        $sensors = Sensor::where('device_id','=', $device_id)->get();
+        $index = 0;
+        $measurements = [];
+        foreach ($sensors as $sensor) {
+            $measurements[$sensor->type] = Measurement::where('sensor_id','=',$sensor->id)->latest()->first()->data;
+            $index++;
+        }
+        if(empty($measurements)){
             return -1;
         } else {
-            return $measurement;
+            return $measurements;
         }
       }
     

@@ -4,22 +4,20 @@ export default class Graph {
     constructor(title, type, sensor_id){
         this.sensor_id = sensor_id;
         this.type = type;
-        this.content = `<div class="card shadow bg-light mb-3 text-center" sensor="${sensor_id}">
+        this.content = `<div class="shadow bg-light mb-3 text-center graph card" sensor="${sensor_id}">
                             <h5 class="card-header" >${title}</h5>
                             <div class="card-body">
                                 <div class="chart-container">
                                     <canvas id="${sensor_id}"></canvas>
                                 </div>
                                 <div class="container-fluid">
-                                    <div class="row justify-content-md-center">
-                                        <div class="input-group col-md-6">
-                                            <input type="date" class="form-control" id="date_chart">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button" id="update">Actualizar</button>
-                                            </div>
-                                            <div class="alert alert-warning" id="alerta" role="alert">
-                                                <strong>UPS! </strong> No hay datos el dia seleccionado.
-                                            </div>
+                                    <div class="row justify-content-center">
+                                        <input type="date" class="form-control date" id="date_chart">
+                                        <div class="container-date-submit">
+                                            <button class="btn btn-primary" type="button" id="update">Actualizar</button>
+                                        </div>
+                                        <div class="alert alert-warning" id="alerta" role="alert">
+                                            <strong>UPS! </strong> No hay datos el dia seleccionado.
                                         </div>
                                     </div>
                                 </div>
@@ -32,40 +30,47 @@ export default class Graph {
         this.self = $(`[sensor|=${this.sensor_id}]`);
         this.self.find('#update').click(()=>this.update()); // evento del boton actualizar
         let date = new Date();
+        console.log(date);
         let year = date.getFullYear();
-        let month = date.getMonth();
-        let day = date.getDay();
-        if(month.length == 1){
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+
+        if(month < 10){
             month = '0' + month;
         }
-        if(day.length == 1){
+        if(day < 10){
             day = '0' + day;
         }
         
         let complete_date = `${year}-${month}-${day}`;
-        console.log(complete_date)
         this.self.find("#date_chart").val(complete_date); //pone fecha del dia actual
 
         let parameter;
         let unit;
         let background_color;
         let border_color;
+        let scale;
         switch (this.type) {
             case 0:
                 parameter = 'Temperatura';
                 unit = 'Grados';
                 background_color = 'rgba(103, 195, 255, 0.6)';
                 border_color = 'rgba(103,195,255,1)';
+                scale = 60;
                 break;
             case 1:
                 parameter = 'Humedad';
                 unit = '%';
                 background_color = 'rgba(153, 100, 100, 0.6)';
                 border_color = 'rgba(153,100,100,1)';
+                scale = 100;
                 break;
             case 2:
                 parameter = 'Humedad tierra';
                 unit = '%';
+                background_color = 'rgba(53, 50, 50, 0.6)';
+                border_color = 'rgba(53,50,50,1)';
+                scale = 100;
                 break;
             default:
                 parameter = 'no title';
@@ -117,7 +122,7 @@ export default class Graph {
                         },
                         ticks:{
                             min:0,
-                            max:60,
+                            max: scale,
                             stepSizes: 5
                         },
                         id: 'y_temp'
@@ -159,13 +164,13 @@ export default class Graph {
         chart.then(response => {
             console.log(response);
             if (response.length == 0){
-                $("#alerta").show();
+                this.self.find("#alerta").show();
             } else {
                 response.forEach((measure,index) => {
                     this.chart_1.data.labels[index] = measure.created_at;
                     this.chart_1.data.datasets[0].data[index] = measure.data;
                 })
-                $("#alerta").hide();
+                this.self.find("#alerta").hide();
                 this.chart_1.clear();
                 this.chart_1.update();
             }

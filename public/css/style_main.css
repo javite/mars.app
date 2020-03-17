@@ -36,14 +36,35 @@ a:link {
     height:30px;
     filter: invert(1);
     margin-right: 3px;
+    animation-name: logo-animation;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
 }
+
+@keyframes logo-animation{
+ 25% {transform: rotateY(360deg)}
+ 100%{transform: rotateY(360deg)}
+}
+
 #name-grower{
-    transition-duration: 2s;
-    filter: blur(0px);
     font-size: 22px;
     color: white;
     font-weight: 500;
+    animation-name: name-blur;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
 }
+
+@keyframes name-blur{
+    40%{filter: blur(0)}
+    50%{filter: blur(4px)}
+    100%{filter: blur(0px)}
+}
+
 .menu-icon{
     filter: invert(28%);
 }
@@ -149,6 +170,19 @@ canvas{
 .card_{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.graph{
+    width: 100%;
+}
+.graph:nth-child(2){
+    margin-left: 5px;
+}
+
+.graphs-container{
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
 .shadow_ {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -166,8 +200,8 @@ canvas{
 }
 .chart-container{
     margin: auto;
-    width: 100%;
-    height: 60vw;
+    /* width: 100%; */
+    /* height: 60vw; */
 }
 .user-icon{
     font-size: 28px;
@@ -308,4 +342,16 @@ align-items: center;
 
 .submit-bundle{
     margin-top: 15px;
+}
+.date{
+    width:46%;
+}
+.input-group-append{
+    width: 20%;
+}
+
+@media (min-width: 768px){
+    .graph {
+        max-width: 49%;
+    }
 }

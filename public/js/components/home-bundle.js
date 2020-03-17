@@ -40,8 +40,9 @@ export default class HomeBundle {
             if(this.devices.length>0){
                 let lastMeasurement = this.lastMeasurement(this.device_id);
                 lastMeasurement.then(data=>{
+                    console.log(data);
                     for (let index = 0; index < 3; index++) {
-                        this.cardArray[index] = new cardMeasurement(data, index);
+                        this.cardArray[index] = new cardMeasurement(data[index], index);
                     }
                     for (let index = 0; index < 3; index++) {
                         this.cardArrayOuput[index] = new cardOuput(index);
