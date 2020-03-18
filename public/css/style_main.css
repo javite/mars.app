@@ -3,7 +3,8 @@
 }
 
 body{
-    font-family: 'Quicksand', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family: 'Heebo', sans-serif;
 }
 a:link {
     text-decoration: none;
@@ -51,6 +52,7 @@ a:link {
 #name-grower{
     font-size: 22px;
     color: white;
+    font-family: 'Quicksand', sans-serif; 
     font-weight: 500;
     animation-name: name-blur;
     animation-duration: 6s;
@@ -62,7 +64,7 @@ a:link {
 @keyframes name-blur{
     40%{filter: blur(0)}
     50%{filter: blur(4px)}
-    100%{filter: blur(0px)}
+    60%{filter: blur(0px)}
 }
 
 .menu-icon{
@@ -99,13 +101,16 @@ a:link {
     z-index: 20;
 }
 h1, h3, h5{
-    font-family: 'Quicksand', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family: 'Heebo', sans-serif;
+    font-weight: 200!important;
 }
 
 .texto{
     margin-bottom: 5px;
     color: white;
-    font-family: 'Quicksand', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family: 'Heebo', sans-serif;
     font-size: 22px;
 }
 

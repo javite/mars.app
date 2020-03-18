@@ -38,18 +38,13 @@ export default class cardMeasurement{
                 break;
         }
 
-        this.content =`  <div class="card shadow bg-light text-center" id="${id}">
+        this.content =`  <div class="card shadow bg-dark text-success text-center" id="${id}">
+                            <h5 class="card-header" id="title">${title} ${sub_title}</h5>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h4 class="text-left" id="title">${title}</h4>
-                                        <h5 class="text-left" id="sub-title">${sub_title}</h5>
-                                    </div>
-                                    <div class="card-value col">
-                                        <h3 class="card-text"><span id="value">${value}</span> <span id="unit">${unit}</span></h3>
+                                    <div class="card-value ">
+                                        <h1 class="card-text text-light"><span id="value">${value}</span> <span id="unit">${unit}</span></h1>
                                         <img src=${img_card} id="img-temp" alt="">
                                     </div>
-                                </div>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted text-left" >Actualizado: <span id="updated_at">${measurement.updated_at}</span></small>
@@ -77,3 +72,21 @@ export default class cardMeasurement{
 
 
 }
+/*<div class="card shadow bg-light text-center" id="${id}">
+                            
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="text-left" id="title">${title}</h4>
+                                        <h5 class="text-left" id="sub-title">${sub_title}</h5>
+                                    </div>
+                                    <div class="card-value col">
+                                        <h3 class="card-text"><span id="value">${value}</span> <span id="unit">${unit}</span></h3>
+                                        <img src=${img_card} id="img-temp" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted text-left" >Actualizado: <span id="updated_at">${measurement.updated_at}</span></small>
+                            </div>
+                        </div> */
