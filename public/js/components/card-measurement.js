@@ -4,7 +4,8 @@ export default class cardMeasurement{
         let thisClass = this;
         let title;
         let sub_title; 
-        let value = measurement;
+        let value;
+        let updated_at = measurement.updated_at;
         let unit;
         let img_card;
         let id;
@@ -13,7 +14,7 @@ export default class cardMeasurement{
             case 0:
                 title = 'Temperatura';
                 sub_title = 'ambiente'; 
-                // value = measurement;
+                value = measurement.Temperatura;
                 unit = '°C';
                 img_card = 'images/thermometer.svg';
                 id = `temperature_${type}`;
@@ -21,7 +22,7 @@ export default class cardMeasurement{
             case 1:
                 title = 'Humedad';
                 sub_title = 'ambiente'; 
-                // value = measurement;
+                value = measurement.Humedad;
                 unit = '%';
                 img_card = 'images/drop.svg';
                 id = `humidity_${type}`;
@@ -29,7 +30,7 @@ export default class cardMeasurement{
             case 2:
                 title = 'Humedad';
                 sub_title = 'de tierra'; 
-                // value = measurement;
+                value = measurement.Humedad_tierra;
                 unit = '%';
                 img_card = 'images/soil_hum.svg';
                 id = `soil_humidity_${type}`;
@@ -47,7 +48,7 @@ export default class cardMeasurement{
                                     </div>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted text-left" >Actualizado: <span id="updated_at">${measurement.updated_at}</span></small>
+                                <small class="text-muted text-left" >Actualizado: <span id="updated_at">${updated_at}</span></small>
                             </div>
                         </div>
                     `;

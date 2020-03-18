@@ -14,9 +14,11 @@ class MeasurementsController extends Controller
         $index = 0;
         $measurements = [];
         foreach ($sensors as $sensor) {
-            $measurements[$sensor->type] = Measurement::where('sensor_id','=',$sensor->id)->latest()->first()->data;
+            $measurements[$sensor->name] = Measurement::where('sensor_id','=',$sensor->id)->latest()->first()->data;
+            $updated_at = Measurement::where('sensor_id','=',$sensor->id)->latest()->first()->created_at;
             $index++;
         }
+        $measurements['updated_at'] = $updated_at;
         if(empty($measurements)){
             return -1;
         } else {

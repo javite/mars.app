@@ -42,7 +42,7 @@ export default class HomeBundle {
                 lastMeasurement.then(data=>{
                     console.log(data);
                     for (let index = 0; index < 3; index++) {
-                        this.cardArray[index] = new cardMeasurement(data[index], index);
+                        this.cardArray[index] = new cardMeasurement(data, index);
                     }
                     for (let index = 0; index < 3; index++) {
                         this.cardArrayOuput[index] = new cardOuput(index);
