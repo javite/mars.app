@@ -9,16 +9,22 @@ use App\Sensor;
 
 class MeasurementsController extends Controller
 {
+    public function getMeasurement() {
+        $sensor_id = $_GET['sensor_id'];
+        $measurement = Measurement::where('sensor_id','=',$sensor_id)->latest()->first()->created_at->format('Y-m-d H:i:s');
+        return $measurement;
+    }
+
     public function getLastMeasurement($device_id) {
         $sensors = Sensor::where('device_id','=', $device_id)->get();
         $index = 0;
         $measurements = [];
         foreach ($sensors as $sensor) {
             $measurements[$sensor->name] = Measurement::where('sensor_id','=',$sensor->id)->latest()->first()->data;
-            $updated_at = Measurement::where('sensor_id','=',$sensor->id)->latest()->first()->created_at;
+            $created_at = Measurement::where('sensor_id','=',$sensor->id)->latest()->first()->created_at->format('Y-m-d H:i:s');
             $index++;
         }
-        $measurements['updated_at'] = $updated_at;
+        $measurements['created_at'] = $created_at;
         if(empty($measurements)){
             return -1;
         } else {
@@ -26,7 +32,7 @@ class MeasurementsController extends Controller
         }
       }
     
-    public function getMeasurements($sensor_id) {
+    public function getMeasurements() {
         $date_selected = strtotime($_GET['date']);
         $device_id = $_GET['device_id'];
         $limit = $_GET['limit'];
@@ -34,7 +40,7 @@ class MeasurementsController extends Controller
         $date_plus_1 = strtotime("+1 day", $date_selected);
         $today = date('Y-m-d H:i:s',$date_selected);
         $tomorrow = date('Y-m-d H:i:s',$date_plus_1);
-        
+        // $measurements = Measurement::whereBetween('created_at',[$today, $tomorrow])->where('device_id','=', $device_id)->limit($limit)->orderBy('id','desc')->get();
         $measurements = Measurement::whereBetween('created_at',[$today, $tomorrow])->where('device_id','=', $device_id)->limit($limit)->orderBy('id','desc')->get();
         return $measurements;
 
@@ -45,17 +51,14 @@ class MeasurementsController extends Controller
         $sensor_id = $_GET['sensor_id'];
         $limit = $_GET['limit'];
 
-        $date_plus_1 = strtotime("+1 day", $date_selected);
-        $today = date('Y-m-d H:i:s',$date_selected);
+        $date = date('Y-m-d H:i:s',$date_selected);
         
-        // $measurements = Measurement::whereBetween('created_at',[$today, $tomorrow])->where('device_id','=', $device_id)->limit($limit)->orderBy('id','desc')->get();
-        $measurements = Measurement::whereDate('created_at',$today)->where('sensor_id','=', $sensor_id)->limit($limit)->orderBy('id','desc')->get();
+        $measurements = Measurement::whereDate('created_at',$date)->where('sensor_id','=', $sensor_id)->limit($limit)->orderBy('id','desc')->get();
         return $measurements;
 
     }
 
-    public function newMeasurement(Request $data){ //Request
-
+    public function newMeasurement(Request $data){ 
         if($data->has('device_id')){
             $device_id = $data->device_id;
             $device = Device::find($device_id);
@@ -74,7 +77,5 @@ class MeasurementsController extends Controller
                 return -1;
             } 
         } else return -2;
-
-
     }
 }

@@ -5,7 +5,7 @@ export default class cardMeasurement{
         let title;
         let sub_title; 
         let value;
-        let updated_at = measurement.updated_at;
+        let updated_at = measurement.created_at;
         let unit;
         let img_card;
         let id;

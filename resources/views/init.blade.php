@@ -62,7 +62,7 @@ $date = $dia.", ".$date;
                        {{Auth::user()->name}}
                     @endauth
                     @guest
-                        Ingresar.
+                        Ingresar
                     @endguest
                     </a>
                 </div>

@@ -40,4 +40,8 @@ export default class IconOutputBundle {
         return this.clickState;
     }
 
+    getRef(){
+        return this.self.find('#btn-edit-day');
+    }
+
 }
