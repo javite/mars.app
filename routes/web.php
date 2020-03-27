@@ -61,6 +61,18 @@ Route::post('/saveMeasurements',"MeasurementsController@saveMeasurements");
 Route::post('/deleteMeasurements',"MeasurementsController@deleteMeasurements");
 Route::post('/newMeasurement',"MeasurementsController@newMeasurement");
 
+/*PLANTS*/
+Route::get('/getPlants',"PlantsController@getPlants");
+Route::post('/savePlant',"PlantsController@savePlant");
+Route::post('/deletePlant',"PlantsController@deletePlant");
+Route::post('/newPlant',"PlantsController@newPlant");
+
+/*EVENTS*/
+Route::get('/getEvents/{plant_id}',"EventsController@getEvents");
+Route::post('/saveEvent',"EventsController@saveEvent");
+Route::post('/deleteEvent',"EventsController@deleteEvent");
+Route::post('/newEvent',"EventsController@newEvent");
+
 /*SENSORS*/
 
 

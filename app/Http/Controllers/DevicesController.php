@@ -35,10 +35,16 @@ class DevicesController extends Controller
 
       public function deleteDevice(Request $data){
         $device_id = $data["device_id"];
-        $device = Device::find($device_id);
-        $device->delete();
-    
-        return 1; //TODO: ver errores
+        try {
+          $device = Device::findOrFail($device_id);
+          $device->delete();
+          $response = 1;
+      } catch (\Throwable $th) {
+          $response = -1;
+      }
+  
+      return $response;
+
       }
 
       public function newDevice(Request $data){

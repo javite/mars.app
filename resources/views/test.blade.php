@@ -17,13 +17,29 @@
         <label for="user_id" class="form-control">user id</label>
         <input type="text" name="user_id" value="1" class="form-control">
     </div>
-    <!-- <div class="form-group">
+    <div class="form-group">
         <label for="device_id" class="form-control">Device id</label>
         <input type="text" name="device_id" value="6">
-    </div> -->
-    <div class="form-group">
+    </div>
+    <!-- <div class="form-group">
         <label for="device_name" class="form-control">Device name</label>
         <input type="text" name="device_name" value="Grow-2">
+    </div> -->
+    <div class="form-group">
+        <label for="plant_id" class="form-control">Plant ID</label>
+        <input type="text" name="plant_id" value="1">
+    </div>
+    <div class="form-group">
+        <label for="plant_name" class="form-control">Plant name</label>
+        <input type="text" name="plant_name" value="maria julia">
+    </div>
+    <div class="form-group">
+        <label for="species" class="form-control">Plant species</label>
+        <input type="text" name="species" value="buble">
+    </div>
+    <div class="form-group">
+        <label for="comments" class="form-control">comments</label>
+        <input type="text" name="comments" value="esta es una planta loca">
     </div>
     <!-- <div class="form-group">
         <button type="submit" class="btn btn-secondary">submit</button>

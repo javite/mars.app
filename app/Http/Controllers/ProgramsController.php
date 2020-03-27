@@ -9,7 +9,7 @@ use App\Output;
 
 class ProgramsController extends Controller
 {
-    public function getPrograms($device_id ){
+    public function getPrograms($device_id){
         $programs = Program::where("device_id","=",$device_id )->get();
 
         return $programs; //lo devuelve en json
