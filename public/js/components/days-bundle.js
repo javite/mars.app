@@ -107,33 +107,38 @@ export default class DaysBundle {
         form = `${form}&_token=${token}&output_id=${output_id}`;
         func = this.flagNewDay;
         console.log(form, func);
-        if(func == 'deleteDay'){
-            $.post(func, form)
-                .done(()=>{
-                    let _day_deleted = this.days_array[this.id].find((day)=>day.id==id);
-                    _day_deleted.delete();
-                    console.log('Day deleted: ', _day_deleted);
-                    this.cancel(control); //acomoda interfaz.
-                })
-                .fail((err)=>console.log('Error al borrar dia: ',err))
-        } else if (func == 'saveDay'){
-            $.post(func, form)
-                .done((day_updated)=>{
-                    let _day_updated = this.days_array[this.id].find((day)=>day.id==id);
-                    _day_updated.update(day_updated);
-                    console.log('Day updated: ', day_updated);
-                    this.cancel(control); //acomoda interfaz.
-                })
-                .fail((err)=>console.log('Error al actualizar dia: ',err))
-        }else if (func == 'newDay'){
-            $.post(func, form)
-                .done((day_created)=>{
-                    let length = this.days_array[this.id].length - 1;
-                    this.days_array[this.id][length].update(day_created);
-                    console.log('New day: ', day_created);
-                    this.cancel(control); //acomoda interfaz.
-                })
-                .fail((err)=>console.log('Error al crear un dia: ',err))
+        switch (func) {
+            case 'deleteDay':
+                $.post(func, form)
+                    .done(()=>{
+                        let index = this.days_array[this.id].findIndex((day)=> day.id == id);
+                        this.days_array[this.id][index].delete();
+                        let _day_deleted = this.days_array[this.id].splice(index, 1);
+                        console.log('Day deleted: ', _day_deleted);
+                        this.cancel(control); //acomoda interfaz.
+                    })
+                    .fail((err)=>console.log('Error al borrar dia: ',err))
+                break;
+            case 'saveDay':
+                $.post(func, form)
+                    .done((day_updated)=>{
+                        let _day_updated = this.days_array[this.id].find((day)=>day.id==id);
+                        _day_updated.update(day_updated);
+                        console.log('Day updated: ', day_updated);
+                        this.cancel(control); //acomoda interfaz.
+                    })
+                    .fail((err)=>console.log('Error al actualizar dia: ',err))
+            case 'newDay':
+                $.post(func, form)
+                    .done((day_created)=>{
+                        let length = this.days_array[this.id].length - 1;
+                        this.days_array[this.id][length].update(day_created);
+                        console.log('New day: ', day_created);
+                        this.cancel(control); //acomoda interfaz.
+                    })
+                    .fail((err)=>console.log('Error al crear un dia: ',err))
+            default:
+                break;
         }
     }
 
@@ -155,7 +160,6 @@ export default class DaysBundle {
     }
 
     checkDOM(){
-        console.log(this.days_array);
         if(this.days_array[this.id].length == 0){
             this.errorMsg.fadeIn();
             this.addDay.show();
@@ -182,8 +186,8 @@ export default class DaysBundle {
 
     cancelNew(control){
         this.days_array[this.id].pop();
-        this.cancel(control);
         this._newDay.delete();
+        this.cancel(control);
         console.log('cancel new');
     }
 

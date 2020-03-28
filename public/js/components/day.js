@@ -85,7 +85,7 @@ export default class Day {
     }
 
     hide(){
-        this.self.hide();
+        this.self.slideUp();
     }
 
     show(){

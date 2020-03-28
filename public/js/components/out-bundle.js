@@ -58,12 +58,6 @@ export default class OutBundle {
         .catch(error => console.error(error))
     }
 
-    newProgram(program_id){
-        this.program_id = program_id;
-        console.log(this.program_id);
-        this.getOutputs(this.program_id);
-    }
-
     update(){
         this.output = this.outputs.filter(output=>output.id == this.id_selected)[0];
         this.daysBundle.update(this.output.outputs_names_id);
@@ -86,4 +80,21 @@ export default class OutBundle {
         $('.out-bundle').slideDown();
     }
 
+    remove(){
+        $('.out-bundle').remove();
+    }
+    
+    // newProgram(program_id){
+    //     this.program_id = program_id;
+    //     console.log(this.program_id);
+    //     let _getOutputs = this.getOutputs(this.program.id)
+    //     _getOutputs.then(json => {
+    //         console.log('outputs', json);
+    //         this.outputs = json.outputs;
+    //         this.days = json.days;
+    //         this.id_selected = this.outputs[0].id;
+    //         this.daysBundle = new DaysBundle(this.days,this.outputs[0].outputs_names_id, this.config);
+    //         this.daysBundle.show();
+    //     })
+    // }
 }

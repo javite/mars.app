@@ -5,7 +5,7 @@ import OutBundle from './out-bundle.js';
 export default class ProgramBundle {
 
     constructor(device_id, config){
-        this.value;
+        this.value = 0;
         this.content = `<div class="program-selector-bundle border_1" id="program-selector-bundle">
                             <div id='program-cont' style='display:none;'>
                                 <div class="program-label-selector-bundle ">
@@ -40,12 +40,11 @@ export default class ProgramBundle {
             if(this.programs.length == 0){
                 this.showError('No hay programas creados aun');
             } else {
-            /*MENU OUTPUT */
-                this.outBundle = new OutBundle(this.programs[0], this.config); //si hay programas crea las output
+            // /*MENU OUTPUT */
+                // this.outBundle = new OutBundle(this.programs[0], this.config); //si hay programas crea las 
                 this.update();
             }
         })
-        // .catch((err)=>console.log(err));
 
         let program_id_ref = $('#program_id');
         this.selector = $('#program');
@@ -54,19 +53,16 @@ export default class ProgramBundle {
             program_id_ref.val(this.programs[this.value].id);
             this.program_id = program_id_ref.val();
             console.log('program_id: ', this.program_id);
-            this.outBundle.newProgram(this.program_id);
+            this.update();
         })
-
     }
 
     update(){
-        let thisclass = this;
         let selected;
         let firstTime = false;
         if(typeof this.value === "undefined"){
             firstTime = true;
         }
-
         this.selector.html('');
         for (let index = 0; index < this.programs.length; index++) {
             if(firstTime){
@@ -79,19 +75,23 @@ export default class ProgramBundle {
             }
             this.selector.append(`<option value="${index}" ${selected}>${this.programs[index].name}</option>`); //${programs[index].id}
         }
-         //guarda el id del programa
+        /*MENU OUTPUT */
+        if(typeof this.outBundle !== "undefined"){
+            this.outBundle.remove();
+        };
+        this.outBundle = new OutBundle(this.programs[this.value], this.config); //si hay programas crea las output
 
         this.iconProgramBundle.update(this.programs);
         this.iconProgramBundle.show();
-        // this.outBundle.update();//acualiza select de salidas
-
         this.show();
     }
+
     getPrograms(device_id){
         return fetch(`getPrograms/${device_id}`)//todos los programas
         .then(data =>data.json())
         .catch(error => console.error(error))
     }
+
     newProgram(){
         this.hide();
         this.formEdit.show();
@@ -100,15 +100,17 @@ export default class ProgramBundle {
         this.outBundle.hide();
         this.action = 'new';
     }
+
     eraseProgram(){
+        console.log('erase program')
         this.hide();
         this.formEdit.show();
         this.formEdit.message(`¿Seguro desea borrar el programa: ${this.programs[this.value].name}?`);
         this.iconProgramBundle.hide();
         this.outBundle.hide();
         this.action = 'delete';
-        console.log('erase program')
     }
+
     editProgram(){
         console.log('edit program');
         this.hide();
@@ -118,12 +120,14 @@ export default class ProgramBundle {
         this.outBundle.hide();
         this.action = 'edit';
     }
+
     endEditProgram(){
         this.show();
         this.formEdit.hide();
         this.iconProgramBundle.show();
         this.outBundle.show();
     }
+
     updateProgram(){ //cambia el nombre al programa
         let form = $('#program-form').serialize();
         console.log(form);
@@ -139,22 +143,20 @@ export default class ProgramBundle {
                     .fail(()=>{
                         console.log("error al cambiar nombre");
                     })
-                    // .always(()=>console.log("finished"))
             break;
             case 'new':
                 $.post('newProgram', form)
                 .done(program=>{
                     console.log('Nuevo Programa creado', program);
                     this.programs.push(program);
-                    this.value = this.programs.length-1;
+                    this.value = this.programs.length - 1;
                     console.log('Nuevo Programa creado', this.programs);
                     this.endEditProgram();
-                    this.update(this.programs, this.outputs);
+                    this.update();
                 })
                 .fail(()=>{
                     console.log("error al cambiar nombre");
                 })
-                // .always(()=>console.log("finished"))
             break;
             case 'delete':
                 $.post('deleteProgram', form)
@@ -175,13 +177,6 @@ export default class ProgramBundle {
             break;
         }
     }
-    createNewProgram(){ //crea un nuevo programa
-        
-    }
-
-    cancelProgram(){ //cancela la creacion o cambio de nombre de programa
-        
-    }
 
     change(){
         return $('#program');
@@ -196,7 +191,6 @@ export default class ProgramBundle {
 
     show(){
         $('#program-cont').slideDown();
-        console.log('show prog bund');
     }
 
     setValue(val){
