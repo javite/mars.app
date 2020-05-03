@@ -23,6 +23,28 @@ class OutputsController extends Controller
         return json_encode($response); //no hace falta to Json, ya devuelve Json.
     }
 
+    public function getOutputsBoard($program_id){
+        $response = [];
+        $outputs = DB::table('outputs_names')
+            ->select('outputs.id','output_name', 'outputs.outputs_names_id','timerMode', 'period', 'duration')
+            ->join('outputs', 'outputs.outputs_names_id', '=', 'outputs_names.id')
+            ->where('program_id',$program_id )->get();
+        foreach($outputs as $key => $output){
+            $days = Day::select('day','hour_on', 'hour_off')->where('output_id','=',$output->id)->get();
+            if(sizeof($days)>0){
+                foreach ($days as $key2 => $day) {
+                    $days_[$key2] = $day->day;
+                    $hours_on[$key2]= $day->hour_on;
+                    $hours_off[$key2] = $day->hour_off;
+                }
+                $out = [$output->outputs_names_id, $output->output_name, $output->timerMode, $days_, $hours_on, $hours_off];
+            } else $out = [$output->outputs_names_id, $output->output_name, $output->timerMode, [-1], [0], [0]];
+        $outs[$key] = $out;
+        }
+        $response = $outs;
+        return json_encode($response);
+    }
+
     public function saveOutput(Request $data){
         $output_id = $data["output_id"];
         $out = $data["output"];

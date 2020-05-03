@@ -70,14 +70,14 @@ class PlantsController extends Controller
         $newPlant->user_id  = $user_id;
         $newPlant->device_id  = $device_id;
         $newPlant->name = $name;
-        if(isset($data["species"])){
+        if(!empty($data["species"])){
             $newPlant->species = $species;
         }
-        if(isset($data["comment"])){
+        if(!empty($data["comment"])){
             $newPlant->comment = $comment;
         }
 
         $newPlant->save();
-        return $newPlant->id;
+        return $newPlant;
       }
 }
