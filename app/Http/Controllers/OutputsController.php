@@ -41,7 +41,7 @@ class OutputsController extends Controller
                     $hours_off[$key2] = $day->hour_off;
                 }
                 $out = [
-                    "id"        =>$output->outputs_names_id, 
+                    "out"        =>$output->outputs_names_id, 
                     "name"      =>$output->output_name, 
                     "timerMode" =>$output->timerMode, 
                     "days"      =>$days_,
@@ -49,7 +49,7 @@ class OutputsController extends Controller
                     "hours_off" =>$hours_off
                 ];
             } else $out = [
-                    "id"        =>$output->outputs_names_id, 
+                    "out"        =>$output->outputs_names_id, 
                     "name"      =>$output->output_name, 
                     "timerMode" =>$output->timerMode, 
                     "days"      =>[-1], 
