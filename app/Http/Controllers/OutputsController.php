@@ -32,14 +32,31 @@ class OutputsController extends Controller
         foreach($outputs as $key => $output){
             $days = Day::select('day','hour_on', 'hour_off')->where('output_id','=',$output->id)->get();
             if(sizeof($days)>0){
+                $days_ = [];
+                $hours_on = [];
+                $hours_off = [];
                 foreach ($days as $key2 => $day) {
                     $days_[$key2] = $day->day;
                     $hours_on[$key2]= $day->hour_on;
                     $hours_off[$key2] = $day->hour_off;
                 }
-                $out = [$output->outputs_names_id, $output->output_name, $output->timerMode, $days_, $hours_on, $hours_off];
-            } else $out = [$output->outputs_names_id, $output->output_name, $output->timerMode, [-1], [0], [0]];
-        $outs[$key] = $out;
+                $out = [
+                    "id"        =>$output->outputs_names_id, 
+                    "name"      =>$output->output_name, 
+                    "timerMode" =>$output->timerMode, 
+                    "days"      =>$days_,
+                    "hours_on"  =>$hours_on, 
+                    "hours_off" =>$hours_off
+                ];
+            } else $out = [
+                    "id"        =>$output->outputs_names_id, 
+                    "name"      =>$output->output_name, 
+                    "timerMode" =>$output->timerMode, 
+                    "days"      =>[-1], 
+                    "hours_on"  =>[0], 
+                    "hours_off"  =>[0]
+            ];
+            $outs[$key] = $out;
         }
         $response = $outs;
         return json_encode($response);
