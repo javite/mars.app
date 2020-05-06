@@ -55,14 +55,7 @@ class OutputsController extends Controller
                     "hours_on"  =>$hours_on, 
                     "hours_off" =>$hours_off
                 ];
-            } else $out = [
-                    "out"        =>$output->outputs_names_id, 
-                    "name"      =>$output->output_name, 
-                    "timerMode" =>$output->timerMode, 
-                    "days"      =>[-1], 
-                    "hours_on"  =>[0], 
-                    "hours_off"  =>[0]
-            ];
+            } 
             $outs[$key] = $out;
         }
 
