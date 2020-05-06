@@ -55,8 +55,9 @@ class OutputsController extends Controller
                     "hours_on"  =>$hours_on, 
                     "hours_off" =>$hours_off
                 ];
+                $outs[$key] = $out;
             } 
-            $outs[$key] = $out;
+            
         }
 
         $response = $outs;
