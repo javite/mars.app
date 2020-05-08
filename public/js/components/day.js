@@ -46,7 +46,7 @@ export default class Day {
         } else {
             console.log('empty day');
             this.id = 0;
-            day_selected = 0;
+            day_selected = 7;
             emptyDay = true;
         }
 

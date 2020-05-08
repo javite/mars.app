@@ -56,7 +56,7 @@ class ProgramsController extends Controller
           foreach ($outputs_names as $key => $outputs_name) { //se crean todas las salidas
             $program_id = $id;
             $out = $outputs_name->id;
-            $timer_mode = 0;
+            $timer_mode = 1;
             $newOutput = new Output();
             $newOutput->program_id = $program_id ;
             $newOutput->outputs_names_id = $out;
