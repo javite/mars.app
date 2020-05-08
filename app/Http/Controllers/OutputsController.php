@@ -25,17 +25,18 @@ class OutputsController extends Controller
 
     public function getOutputsBoard($program_id){
         $response = [];
+        $outs = [];
         $outputs = DB::table('outputs_names')
             ->select('outputs.id','output_name', 'outputs.outputs_names_id','timerMode', 'period', 'duration')
             ->join('outputs', 'outputs.outputs_names_id', '=', 'outputs_names.id')
-            ->where('program_id',$program_id )->get();
+            ->where('program_id','=', $program_id)->get();
+            
         foreach($outputs as $key => $output){
             $days = Day::select('day','hour_on', 'hour_off')->where('output_id','=',$output->id)->get();
-            if(sizeof($days)>0){
+            if(sizeof($days) > 0){
                 $days_ = [];
                 $hours_on = [];
                 $hours_off = [];
-                $outs = [];
                 foreach ($days as $key2 => $day) {
                     $days_[$key2] = $day->day;
                     $hour_on = explode(":", $day->hour_on); //separa valores por coma y transforma en array
