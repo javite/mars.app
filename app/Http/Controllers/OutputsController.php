@@ -41,12 +41,12 @@ class OutputsController extends Controller
                     $days_[$key2] = $day->day;
                     $hour_on = explode(":", $day->hour_on); //separa valores por coma y transforma en array
                     $hour_on_float = floatval($hour_on[0]);
-                    $minute_on_float = round(floatval($hour_on[1]) * 0.0166, 4);
-                    $hours_on[$key2]= $hour_on_float + $minute_on_float;
+                    $minute_on_float = floatval($hour_on[1]) * 0.0166;
+                    $hours_on[$key2]= round($hour_on_float + $minute_on_float, 4);
                     $hour_off = explode(":", $day->hour_off); //separa valores por coma y transforma en array
                     $hour_off_float = floatval($hour_off[0]);
-                    $minute_off_float = round(floatval($hour_off[1]) * 0.0166, 4);
-                    $hours_off[$key2] = $hour_off_float + $minute_off_float ;
+                    $minute_off_float = floatval($hour_off[1]) * 0.0166;
+                    $hours_off[$key2] = round($hour_off_float + $minute_off_float, 4);
                 }
                 $out = [
                     "timerMode" =>$output->timerMode,
