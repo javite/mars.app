@@ -18,9 +18,21 @@ class DevicesController extends Controller
     }
 
     public function getDevice($serial_number){
-        $device = Device::where("serial_number","=",$serial_number)->get();
+        $device = Device::where("serial_number","=",$serial_number)->get()->first();
 
-        return $device;
+        if ($device->id == null) {
+            $newDevice = new Device();
+            $newDevice->user_id  = 0;
+            $newDevice->name = "";
+            $newDevice->model = "";
+            $newDevice->version = "";
+            $newDevice->api_token = Str::random(60);
+            $newDevice->save();
+            $response = $newDevice;
+        } else {
+            $response = $device;
+        }
+        return $response;
     }
 
     public function saveDevice(Request $data){
