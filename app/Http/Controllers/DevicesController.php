@@ -20,7 +20,7 @@ class DevicesController extends Controller
     public function getDevice($serial_number){
         $device = Device::where("serial_number","=",$serial_number)->get()->first();
 
-        if (property_exists($device,"id")){
+        if (isset($device->id)){
             $newDevice = new Device();
             $newDevice->user_id  = 0;
             $newDevice->name = "";
