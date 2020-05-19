@@ -17,8 +17,8 @@ class DevicesController extends Controller
         return $devices;
     }
 
-    public function getDevice($device_id){
-        $device = Device::where("device_id","=",$device_id )->get();
+    public function getDevice($serial_number){
+        $device = Device::where("serial_number","=",$device_id )->get();
 
         return $device;
     }

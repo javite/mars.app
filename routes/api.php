@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('/getDevices/{user_id}',"DevicesController@getDevices");
-Route::get('/getDevice/{device_id}',"DevicesController@getDevice");
+Route::get('/getDevice/{serial_number}',"DevicesController@getDevice");
 Route::get('/getPrograms/{device_id}',"ProgramsController@getPrograms");
 Route::get('/getOutputs/{program_id}',"OutputsController@getOutputs");
 Route::get('/getOutputsBoard/{program_id}',"OutputsController@getOutputsBoard");
