@@ -94,7 +94,7 @@ export default class Graph {
                         border_color
                     ],
                     borderWidth: 3,
-                    fill: false,
+                    fill: true,
                     pointRadius: 1,
                     pointHoverRadius: 3,
                     yAxisID: 'y_temp',

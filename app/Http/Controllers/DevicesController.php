@@ -17,6 +17,12 @@ class DevicesController extends Controller
         return $devices;
     }
 
+    public function getDevice($device_id){
+        $device = Device::where("device_id","=",$device_id )->get();
+
+        return $device;
+    }
+
     public function saveDevice(Request $data){
         $device_id = $data["device_id"];
         $device_name = $data["device_name"];
