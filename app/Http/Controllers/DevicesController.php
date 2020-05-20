@@ -19,16 +19,18 @@ class DevicesController extends Controller
 
     public function getDevice($serial_number){
         $device = Device::where("serial_number","=",$serial_number)->get()->first();
-
-        if (isset($device->id)){
+        if ($device == null){
             $newDevice = new Device();
             $newDevice->user_id  = 0;
             $newDevice->name = "";
             $newDevice->model = "";
             $newDevice->version = "";
+            $newDevice->serial_number = $serial_number;
             $newDevice->api_token = Str::random(60);
-            $newDevice->save();
-            $response = $newDevice;
+            if($newDevice->save()){
+                $response = $newDevice;
+            } else $response = -1;
+            
         } else {
             $response = $device;
         }
