@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//***TODO LO QUE ENVIA UNA PETICION DEBE TENER ANTER LA RUTA /API/ ANTES DEL NOMBRE DE LA PETICION, por ejemplo /api/getDevice/c5c4a24 ****/
 Route::get('/getDevices/{user_id}',"DevicesController@getDevices");
 Route::get('/getDevice/{serial_number}',"DevicesController@getDevice");
 Route::get('/getPrograms/{device_id}',"ProgramsController@getPrograms");

@@ -38,6 +38,7 @@ Route::get('/getPrograms/{device_id}',"ProgramsController@getPrograms");
 Route::post('/saveProgram',"ProgramsController@saveProgram");
 Route::post('/deleteProgram',"ProgramsController@deleteProgram");
 Route::post('/newProgram',"ProgramsController@newProgram");
+Route::get('/loadProgram/{device_id}/{program_id}',"ProgramsController@loadProgram");
 
 /*OUTPUTS*/
 Route::get('/getOutputs/{program_id}',"OutputsController@getOutputs");

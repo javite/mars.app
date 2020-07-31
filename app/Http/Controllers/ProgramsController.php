@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Program;
 use App\Outputs_name;
 use App\Output;
+use App\Device;
 
 class ProgramsController extends Controller
 {
@@ -67,6 +68,18 @@ class ProgramsController extends Controller
           $id = 0;
         }
         return $newProgram; //TODO: ver errores
+      }
+
+      public function loadProgram($device_id, $program_id){
+        $device = Device::find($device_id);
+        if ($device->id == null) {
+            $response = 0;
+        } else {
+            $device->current_program_id = $program_id;
+            $device->save();
+            $response = 1;
+        }
+        return $response; 
       }
 
       public function outputList(){
