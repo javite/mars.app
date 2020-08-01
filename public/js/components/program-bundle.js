@@ -5,6 +5,7 @@ import OutBundle from './out-bundle.js';
 export default class ProgramBundle {
 
     constructor(device_id, config){
+        this.device_id = device_id;
         this.value = 0;
         this.content = `<div class="program-selector-bundle border_1" id="program-selector-bundle">
                             <div id='program-cont' style='display:none;'>
@@ -13,7 +14,9 @@ export default class ProgramBundle {
                                 </div>
                                 <select class="program-selector form-control" name="program" id="program"></select>
                                 <input type="hidden" id="program_id" name="program_id" value="">
-                                <input type="hidden" id="device_id" name="device_id" value="6">
+                                <input type="hidden" id="device_id" name="device_id" value="">
+                                <br>
+                                <button type='button' class='btn btn-primary mr-2' id='load-program'>Cargar programa</button>
                                 <div class='error' id="program-error"style='display:none;'></div>
                             </div>
                         </div>`;
@@ -55,6 +58,11 @@ export default class ProgramBundle {
             console.log('program_id: ', this.program_id);
             this.update();
         })
+        this.loadProgramButton = $('#load-program');
+        this.loadProgramButton.click(()=>{  //boton de cargar programa
+            let load_program = this.loadProgram();
+            load_program.then(json=>console.log('Load Program: ', json));
+        })
     }
 
     update(){
@@ -80,10 +88,18 @@ export default class ProgramBundle {
             this.outBundle.remove();
         };
         this.outBundle = new OutBundle(this.programs[this.value], this.config); //si hay programas crea las output
-
+        this.program_id = this.programs[this.value].id;
         this.iconProgramBundle.update(this.programs);
         this.iconProgramBundle.show();
         this.show();
+    }
+
+    loadProgram(){
+        let url = `loadProgram/${this.device_id}/${this.program_id}`;
+        console.log('Fetch load program: ', url);
+        return fetch(url)//todos los programas
+        .then(data =>data.json())
+        .catch(error => console.error(error))
     }
 
     getPrograms(device_id){
