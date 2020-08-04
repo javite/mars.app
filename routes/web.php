@@ -92,6 +92,9 @@ Route::get('/debug', function () {
     return view('debug');
 });
 
+Route::get('/updateProgram/{day_id}',"DaysController@updateProgram");
+Route::get('/updateProgramOutput/{output_id}',"OutputsController@updateProgram");
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

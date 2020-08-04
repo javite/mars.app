@@ -32,6 +32,7 @@ class DaysController extends Controller
             $day->hour_off = $hour_off ;
             $day->save();
             $response = $day;
+            $this->updateProgram($day_id);
         }
     
         return $response;
@@ -48,6 +49,7 @@ class DaysController extends Controller
         $newDay->hour_on  = $hour_on;
         $newDay->hour_off = $hour_off;
         $newDay->save();
+        $this->updateProgram($newDay->id);
         
         return $newDay;
     }
@@ -55,6 +57,7 @@ class DaysController extends Controller
     public function deleteDay(Request $data){
         $day_id = $data["day_id"];
         $day = Day::find($day_id);
+        $day->output->program->touch(); //must be before delete()
         $day->delete();
 
         return 1; //TODO: ver errores
@@ -76,5 +79,11 @@ class DaysController extends Controller
         $result[1]= $outputs_names_a;
       
         return json_encode($result); 
+    }
+
+    public function updateProgram($day_id){
+        $day = Day::find($day_id);
+        $result = $day->output->program->touch();
+        return json_encode($result);
     }
 }

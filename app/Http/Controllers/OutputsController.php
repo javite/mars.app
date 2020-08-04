@@ -36,6 +36,7 @@ class OutputsController extends Controller
             $output->timerMode = $timer_mode;
             $output->save();
             $response = $output->id;
+            $this->updateProgram($output->id);
         }
     
         return $response;
@@ -50,6 +51,7 @@ class OutputsController extends Controller
         $newOutput->outputs_names_id = $out;
         $newOutput->timerMode = $timer_mode;
         $newOutput->save();
+        // $this->updateProgram($newOutput->id);
         
         return $newOutput->id; 
     }
@@ -57,8 +59,15 @@ class OutputsController extends Controller
     public function deleteOutput(Request $data){
         $output_id = $data["output_id"];
         $output = Output::find($output_id);
+        $output->program->touch();
         $output->delete();
 
         return 1; //TODO: ver errores
+    }
+
+    public function updateProgram($output_id){
+        $output = Output::find($output_id);
+        $result = $output->program->touch();
+        return json_encode($result);
     }
 }
