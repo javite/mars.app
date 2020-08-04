@@ -53,7 +53,9 @@ export default class HomeBundle {
     }
 
     update(measurement){
+        console.log('update device');
         let array = [measurement.temperature, measurement.humidity, measurement.soil_humidity_1];
+        
         for (let index = 0; index < this.cardArray.length; index++) {
             this.cardArray[index].update(array[index], measurement.updated_at);
         }

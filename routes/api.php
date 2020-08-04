@@ -17,8 +17,8 @@ use Illuminate\Http\Request;
 Route::get('/getDevices/{user_id}',"DevicesController@getDevices");
 Route::get('/getDevice/{serial_number}',"DevicesController@getDevice");
 Route::get('/getPrograms/{device_id}',"ProgramsController@getPrograms");
+Route::get('/getProgram/{program_id}',"ProgramsController@getProgram");
 Route::get('/getOutputs/{program_id}',"OutputsController@getOutputs");
-Route::get('/getOutputsBoard/{program_id}',"OutputsController@getOutputsBoard");
 Route::get('/getDays/{output_id}',"DaysController@getDays");
 
 Route::post('/newMeasurement',"MeasurementsController@newMeasurement");
