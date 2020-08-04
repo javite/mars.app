@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Program;
 use App\Outputs_name;
 use App\Output;
 use App\Device;
+use App\Day;
 
 class ProgramsController extends Controller
 {
