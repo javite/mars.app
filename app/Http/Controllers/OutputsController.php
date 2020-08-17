@@ -51,7 +51,7 @@ class OutputsController extends Controller
         $newOutput->outputs_names_id = $out;
         $newOutput->timerMode = $timer_mode;
         $newOutput->save();
-        // $this->updateProgram($newOutput->id);
+        $this->updateProgram($newOutput->id);
         
         return $newOutput->id; 
     }
