@@ -15,7 +15,7 @@ class AddIpToDevicesTable extends Migration
     {
         Schema::table('devices', function (Blueprint $table) {
             Schema::table('devices', function (Blueprint $table) {
-                $table->string('IP', 50)->after('serial_numeber')
+                $table->string('IP', 50)->after('serial_number')
                 ->nullable()
                 ->default(null);
             });

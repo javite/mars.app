@@ -67,7 +67,7 @@ class OutputsController extends Controller
 
     public function updateProgram($output_id){
         $output = Output::find($output_id);
-        $result = $output->program->touch();
+        $result = $output->program->touch(); //update updated_at
         return json_encode($result);
     }
 }
