@@ -23,7 +23,6 @@ class DevicesController extends Controller
             $newDevice = new Device();
             $newDevice->user_id  = 0;
             $newDevice->name = "";
-            $newDevice->current_program_id = "";
             $newDevice->model = "";
             $newDevice->version = "";
             $newDevice->firmware_version = "";
