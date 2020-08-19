@@ -1,10 +1,10 @@
 ;
 //asignar un nombre y versión al cache
-const CACHE_NAME = 'v1_grower-lab',
+const CACHE_NAME = 'v1_mars',
   urlsToCache = [
-    './',
+    // './',
     'js/script.js',
-    './favicon.ico'
+    './favicon.png'
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos

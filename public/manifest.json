@@ -1,26 +1,26 @@
 {
-  "name": "Grower-lab",
-  "short_name": "Grower-lab",
-  "description": "Bienvenid@s a GROWER-LAB, control automatico de indoor",
+  "name": "Mars",
+  "short_name": "Mars",
+  "description": "Bienvenid@s a Mars Optoelectronica",
   "background_color": "#FFFFFF",
   "theme_color": "#20205c",
   "orientation": "portrait-primary",
   "display": "standalone",
-  "start_url": "./index.php",
+  "start_url": "./",
   "lang": "es-MX",
   "icons": [
     {
-      "src": "images/grower-lab_152x152.png",
+      "src": "images/mars_152x152.png",
       "sizes": "1024x1024",
       "type": "image/png"
     },
     {
-      "src": "images/grower-lab_167x167.png",
+      "src": "images/mars_167x167.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "images/grower-lab_180x180.png",
+      "src": "images/mars_180x180.png",
       "sizes": "384x384",
       "type": "image/png"
     },

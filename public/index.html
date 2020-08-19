@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="theme-color" content="#F0DB4F"> -->
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <!-- PWA config -->
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&display=swap" rel="stylesheet">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> -->
+
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">  
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container-bar ">
+            <span id="name"><img src="logo-web.png" class="logo-svg"  alt="" >MARS - <strong>SunFlash</strong></span>
+        </div>
+    </nav>
+    <div class="background-image"></div>
+    <div class="container-fluid" id="home-container">
+        <form class="row form-program" id="form-program"  >
+            <input type="number" name="photo_periods" value="2" style="display: none;">
+            <div class=" col-md-6">
+                <h4 class="title">Primer Fotoperíodo</h4>
+                <div class="form-group date-container">
+                    <div class="g-1">
+                        <label for="fecha-inicio"  class="col-form-label">Comienza el:</label>
+                        <input type="date" name="init_period_1" id="fecha-inicio-1" class="input-date" value="">
+                    </div>
+                    <div class="g-1">
+                        <label for="fecha-fin" class="col-form-label">Duración del ciclo:</label>
+                        <input type="number" id="duracion-1" class="input-num" value="0"><spam  id="duracion-ciclo-1"> días</spam>
+                        <input type="date" name="end_period_1" id="fecha-fin-1" class="hidden" value="">
+                    </div>
+                    <div class="g-1">
+                        <label for="fecha-fin" class="col-form-label">Termina el:</label>
+                        <input type="date" id="fecha-fin-1-indicator" class="input-date" value="" disabled>
+                    </div>
+                     <div class="g-1">
+                        <label for="hour_on_1"  class="col-form-label">Enciende a las:</label>
+                        <input type="time" name="hour_on_1" id="hora-inicio-1" class="input-time" value="">
+                    </div>
+                    <div class="g-1">
+                        <label for="duracion-hora-1"  class="col-form-label">Durante:</label>
+                        <input type="number" id="duracion-hora-1" class="input-time" value="0"><spam> horas</spam>
+                        <input type="time" name="hour_off_1" id="hora-fin-1" class="hidden" value="">
+                    </div>
+                </div> 
+            </div> 
+     
+            <div class=" col-md-6">
+                <h4 class="title">Segundo Fotoperíodo</h4>
+                <div class="form-group date-container">
+                    <div class="g-1">
+                        <label for="fecha-inicio"  class="col-form-label">Comienza el:</label>
+                        <input type="date" name="init_period_2" id="fecha-inicio-2" class="input-date" value="" >
+                    </div>
+                    <div class="g-1">
+                        <label for="fecha-fin" class="col-form-label">Duración del ciclo:</label>
+                        <input type="number" id="duracion-2" class="input-num" value="64"><spam  id="duracion-ciclo-2"> días</spam>
+                        <input type="date" name="end_period_2" id="fecha-fin-2" class="hidden" value="">
+                    </div>
+                    <div class="g-1">
+                        <label for="fecha-fin" class="col-form-label">Termina el:</label>
+                        <input type="date" id="fecha-fin-2-indicator" class="input-date" value="" disabled>
+                    </div>
+                     <div class="g-1">
+                        <label for="hour_on_2"  class="col-form-label">Enciende a las:</label>
+                        <input type="time" name="hour_on_2" id="hora-inicio-2" class="input-time" value="">
+                    </div>
+                    <div class="g-1">
+                        <label for="hour_off_2"  class="col-form-label">Durante:</label>
+                        <input type="number" id="duracion-hora-2" class="input-time" value="12"><spam id=""> horas</spam>
+                        <input type="time" name="hour_off_2" id="hora-fin-2" class="hidden" value="">
+                    </div>
+                </div> 
+            </div> 
+
+            <div class=" col-md-6">
+                <button type="submit" class="submit btn btn-primary" id="submit-program">Activar el programa</button>
+            </div> 
+        </form> 
+
+        <div class="d-flex flex-row">
+            <button type="submit" class="btn btn-primary" id="toggleButton" onclick="onPress()" disabled>Encender Luces</button>
+            <div class="indicator" id="indicator"></div>
+        </div>
+    </div>
+
+</body>
+</html>

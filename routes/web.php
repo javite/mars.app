@@ -11,21 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('init');
-});//->middleware('auth');
-Route::get('/home',function () {
-    return view('home');
-});//->middleware('auth');
-Route::get('/stats', function () {
-    return view('stats');
-});//->middleware('auth');
-Route::get('/program', function () {
-    return view('program');
-});//->middleware('auth');
-Route::get('/config', function () {
-    return view('config');
-});//->middleware('auth');
+// Route::get('/', function () {
+//     return view('home');
+// })->middleware('auth');//->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+// Route::get('/',function () {
+//     return view('home');
+// })->middleware('auth');//->middleware('auth');
+// Route::get('/stats', function () {
+//     return view('stats');
+// });//->middleware('auth');
+// Route::get('/program', function () {
+//     return view('program');
+// });//->middleware('auth');
+// Route::get('/config', function () {
+//     return view('config');
+// });//->middleware('auth');
 
 /*DEVICES*/
 Route::get('/getDevices',"DevicesController@getDevices");
@@ -97,4 +98,4 @@ Route::get('/updateProgramOutput/{output_id}',"OutputsController@updateProgram")
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

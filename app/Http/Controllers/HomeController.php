@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Device;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $user_id = $user->id;
+        $devices = Device::where("user_id","=",$user_id )->get();
+        $vac = compact('devices');
+        $ip = 'http://'.$devices[0]->IP;
+        // return redirect($ip,301);
+        return view('home', $vac);
+
     }
 }
