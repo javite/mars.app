@@ -72,9 +72,7 @@ function init() {
     // Connect to WebSocket server
     wsConnect(url);
 
-    fetch(url_http + "/getProgram",{
-        mode: 'no-cors',
-    })
+    fetch(url_http + "/getProgram")
     .then(res=>res.json())
     .catch(error => console.error('Error: ', error))
     .then(response => {
@@ -419,6 +417,6 @@ function onPress() {
 
 
 // Call the init function as soon as the page loads
-window.addEventListener("load", getLampsRefs, false);
+// window.addEventListener("load", getLampsRefs, false);
 
         
