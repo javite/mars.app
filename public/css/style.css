@@ -52,7 +52,7 @@ img {
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 1rem 1rem;
+    padding: 0.7rem 1rem;
     background: #f6ad4a;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #fb835c, #f6ad4a); 
     background: linear-gradient(to bottom, #fb835c, #f6ad4a);
@@ -82,6 +82,7 @@ img {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    justify-content: center;
     margin-right: -15px;
     margin-left: -15px;
 }
@@ -231,8 +232,8 @@ label{
  
 .logo-svg{
     width:auto;
-    height:60px;
-    margin-right: 24px;
+    height:47px;
+    margin-right: 13px;
     /* animation-name: logo-animation;
     animation-duration: 6s;
     animation-timing-function: ease-in-out;
@@ -246,7 +247,7 @@ label{
 }
 
 #name{
-    font-size:28px;
+    font-size: 1.5rem;
     color:#f26520;
     font-family: 'Dosis', sans-serif;
     font-weight: 400;
@@ -334,6 +335,17 @@ label{
 #fecha-fin-1::-webkit-calendar-picker-indicator  {
     size: 2px;
     visibility: hidden;
+}
+.lamp{
+    width: 80%;
+    margin-top: 20px;
+    border-radius: 30px;;
+    background-color: #b54444ab;
+    color: white;
+    line-height: 50px;
+}
+.lamp:first{
+    margin-top: 50px;
 }
 
 /* 

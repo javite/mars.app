@@ -12,9 +12,9 @@
     @auth
 
         @isset($devices)
-        <div id="lamps-container">
+        <div id="lamps-container" class="row">
         @foreach ($devices as $device)
-           <button class="btn" ip={{ $device->IP }}>Lampara: {{ $device->name }} <a href="{{ $device->IP }}"></a></button>
+        <a href=http://{{$device->IP}} class="col-md-6 lamp">Lampara: {{ $device->name }}</a>
         @endforeach
         </div>
         @endisset
