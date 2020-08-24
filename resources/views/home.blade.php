@@ -14,7 +14,7 @@
         @isset($devices)
         <div id="lamps-container" class="row">
         @foreach ($devices as $device)
-        <a href=http://{{$device->IP}} class="col-md-6 lamp">Lampara: {{ $device->name }}</a>
+        <spam>Lampara: </spam><a href=http://{{$device->IP}} class="col-md-6 lamp"> {{ $device->name }}</a>
         @endforeach
         </div>
         @endisset

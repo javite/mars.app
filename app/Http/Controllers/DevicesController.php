@@ -17,7 +17,7 @@ class DevicesController extends Controller
         return $devices;
     }
 
-    public function getDevice($serial_number, $ip){
+    public function getDevice($serial_number, $ip, $net_name){
         $device = Device::where("serial_number","=",$serial_number)->get()->first();
         if ($device == null){
             $newDevice = new Device();
@@ -35,6 +35,7 @@ class DevicesController extends Controller
             
         } else {
             $device->ip = $ip;
+            $device->net_name = $net_name;
             $device->save();
             $response = $device;
         }
