@@ -34,9 +34,11 @@ class DevicesController extends Controller
             } else $response = -1;
             
         } else {
-            $device->ip = $ip;
-            $device->net_name = $net_name;
-            $device->save();
+            if (strcp($device->ip,$ip) !== 0) {
+                $device->ip = $ip;
+                $device->net_name = $net_name;
+                $device->save();
+            }
             $response = $device;
         }
         return $response;
