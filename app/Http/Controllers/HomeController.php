@@ -28,10 +28,11 @@ class HomeController extends Controller
         $user = Auth::user();
         $user_id = $user->id;
         $devices = Device::where("user_id","=",$user_id )->get();
-        $vac = compact('devices');
-        $ip = 'http://'.$devices[0]->IP;
-        // return redirect($ip,301);
-        return view('home', $vac);
-
+        if(!$devices->isEmpty()){
+            $vac = compact('devices');
+            return view('home', $vac);
+        }
+        return view('home');
+         
     }
 }

@@ -1,4 +1,10 @@
 @extends('layouts.app')
+@section('css')
+
+@endsection
+@section('css')
+<link rel="stylesheet" type="text/css" href="css/style_login.css">
+@endsection
 
 @section('content')
 <div class="container">

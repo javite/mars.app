@@ -4,6 +4,7 @@
 @endsection
 @section('js')
     <script src="/js/home.js" ></script>
+    <!-- <script src="/js/config.js" ></script> -->
 @endsection
    
 @section('content')
@@ -12,21 +13,19 @@
     @auth
 
         @isset($devices)
-        <div id="lamps-container" class="row">
-        @foreach ($devices as $device)
-        <spam>Lampara: </spam><a href=http://{{$device->IP}} class="col-md-6 lamp"> {{ $device->name }}</a>
-        @endforeach
-        </div>
+        <h4>Tus lámparas:</h4>
+        <div id="lamps-container" class="row"></div>
         @endisset
 
-        @empty($device)
-        
+        @empty($devices)
+        <h4>No hay lamparas asociadas al usuario</h4>
         @endempty
         
     @endauth
     
     @guest
-    
+    <h1>guest</h1>
+
     @endguest
 
     </div>
