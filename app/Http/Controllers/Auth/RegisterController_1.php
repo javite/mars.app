@@ -84,11 +84,12 @@ class RegisterController_1 extends Controller
         $datos = $_POST;
         $mail = $_POST["email"];
         $user = User::where("email","=",$mail)->get()->first();
+        $device = Device::where("serial_number","=",$datosFinales["serial"])->get()->first();
 
         foreach ($datos as $posicion => $dato) {
           $datosFinales[$posicion] = trim($dato);
         }
-    
+        
         if ($datosFinales["name"] == "") {
           $errores["name"] = "Hubo error en el nombre porque esta vacio";
         } else if (ctype_alpha($datosFinales["name"]) == false) {
@@ -133,7 +134,6 @@ class RegisterController_1 extends Controller
           $errores["email"] = "El email ya está en uso";
         }
 
-        $device = Device::where("serial_number","=",$datosFinales["serial"])->get()->first();
         if($device == null){
             $errores["serial"] = "El dispositivo no fue conectado aún a Internet o no existe.";
         }
@@ -149,10 +149,9 @@ class RegisterController_1 extends Controller
             Auth::attempt(['email' => $user->email, 'password' => $datosFinales['password']]);
             return redirect('home');
         } else{
-            // dd($_POST);
             $vac = compact('errores');
             return view('auth\register', $vac);
         }
         
-}
+    }
 }
