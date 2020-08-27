@@ -320,6 +320,7 @@ label{
 .lamp{
     width: 80%;
     margin-top: 20px;
+    /* margin-left: 20px; */
     border-radius: 30px;;
     background-color: #b54444ab;
     color: white;

@@ -17,7 +17,7 @@
                                             @csrf
             <button type="submit" id="btn-logout">
                 <a class="usuario" href="">
-                    <i class="material-icons user-icon">account_circle</i>
+                    <i class="material-icons user-icon">account_circle</i><span>{{ Auth::user()->name }}</span>
                 </a>
             </button>
         </form>

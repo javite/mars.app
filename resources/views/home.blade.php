@@ -4,7 +4,6 @@
 @endsection
 @section('js')
     <script src="/js/home.js" ></script>
-    <!-- <script src="/js/config.js" ></script> -->
 @endsection
    
 @section('content')
@@ -14,7 +13,11 @@
 
         @isset($devices)
         <h4>Tus lámparas:</h4>
-        <div id="lamps-container" class="row"></div>
+        <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center">
+        @foreach($devices as $device)
+        <a href=http://{{$device->IP}} class="lamp"> {{$device->name}}</a>
+        @endforeach
+        </div>
         @endisset
 
         @empty($devices)

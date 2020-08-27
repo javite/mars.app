@@ -15,13 +15,13 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>                        
+                               
+                                 @isset($errores["name"])
+                                    <span class="error" role="alert">
+                                        <strong>{{ $errores["name"] }}</strong>
                                     </span>
-                                @enderror
+                                @endisset
                             </div>
                         </div>
 
@@ -30,12 +30,12 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                
+                                @isset($errores['email'])
+                                    <span class="error" role="alert">
+                                        <strong>{{ $errores['email'] }}</strong>
                                     </span>
-                                @enderror
+                                @endisset
                             </div>
                         </div>
 
@@ -44,12 +44,12 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                
+                                @if(isset($errores['password']))
+                                    <span class="error" role="alert">
+                                        <strong>{{ $errores['password'] }}</strong>
                                     </span>
-                                @enderror
+                                @endif
                             </div>
                         </div>
 
@@ -66,6 +66,11 @@
 
                             <div class="col-md-6">
                                 <input id="serial" type="text" class="form-control" name="serial" required>
+                                @isset($errores["serial"])
+                                    <span class="error" role="alert">
+                                        <strong>{{$errores["serial"] }}</strong>
+                                    </span>
+                                @endisset
                             </div>
                         </div>
 
