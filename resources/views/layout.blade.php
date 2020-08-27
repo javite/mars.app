@@ -12,7 +12,7 @@
 <nav class="navbar">
     <div class="container">
     <div class="w-5"></div>
-    <span id="name"><img src="/images/logo.svg" class="logo-svg"  alt="" >MARS - <strong>SunFlash</strong></span>
+    <span id="name"><img src="/images/logo.svg" class="logo-svg"  alt="" >MARS</span>
         <form class="contenedor-usuario" id="logout-form" action="{{ route('logout') }}" method="POST" >
                                             @csrf
             <button type="submit" id="btn-logout">
