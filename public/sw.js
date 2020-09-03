@@ -1,8 +1,7 @@
 ;
 //asignar un nombre y versión al cache
-const CACHE_NAME = 'v1_grower-lab',
+const CACHE_NAME = 'v1_mars',
   urlsToCache = [
-    './',
     '/js/script.js',
     'favicon.ico'
   ]
