@@ -28,10 +28,12 @@
                 <!-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{'Mars'}}
                 </a> -->
-                <span id="title"><img src="/images/logo.svg" class="logo-svg"  alt="" >MARS - <strong>SunFlash</strong></span>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span id="title"><img src="/images/logo.svg" class="logo-svg"  alt="" >MARS</span>
+                <a class="nav-link navbar-toggler" href="{{ route('login') }}">{{ __('Iniciar') }}</a><a class="nav-link navbar-toggler" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+             
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> -->
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
