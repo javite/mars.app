@@ -108,7 +108,7 @@ Auth::routes(['register' => false]); //['register' => false]
 //         // Registration Routes...
 
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register_1');
+Route::post('register', 'Auth\RegisterController_1@register');
 
 // Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 // Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
