@@ -84,12 +84,12 @@ class RegisterController_1 extends Controller
         $datos = $_POST;
         $mail = $_POST["email"];
         $user = User::where("email","=",$mail)->get()->first();
-        $device = Device::where("serial_number","=",$datosFinales["serial"])->get()->first();
+        
 
         foreach ($datos as $posicion => $dato) {
           $datosFinales[$posicion] = trim($dato);
         }
-        
+        $device = Device::where("serial_number","=",$datosFinales["serial"])->get()->first();
         if ($datosFinales["name"] == "") {
           $errores["name"] = "Hubo error en el nombre porque esta vacio";
         } else if (ctype_alpha($datosFinales["name"]) == false) {
