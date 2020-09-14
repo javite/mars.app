@@ -25,6 +25,6 @@ function updateUI(devices){
 }
 
 // Call the init function as soon as the page loads
-// window.addEventListener("load", init, false);
+window.addEventListener("load", init, false);
 
         
