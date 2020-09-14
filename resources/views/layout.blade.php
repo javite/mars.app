@@ -12,7 +12,7 @@
 <nav class="navbar">
     <div class="container">
     <img src="/images/logo.svg" class="logo-svg"  alt="" >
-    <span id="name"><strong>MARS</strong> Optoelectrónica</span>
+    <span id="name"><strong>MARS</strong></span>
     <form class="contenedor-usuario" id="logout-form" action="{{ route('logout') }}" method="POST" >
                                         @csrf
         <button type="submit" id="btn-logout">
