@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <script src="/js/jquery.min.js" ></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
     <script src="/js/home.js" ></script>
@@ -71,7 +71,7 @@
     </nav>
 
     <div class="background-image"></div>
-    <div class="container" id="home-container">
+    <div class="container" id="home-container"></div>
 
     <script src="./js/script.js"></script>
   </body>
