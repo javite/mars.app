@@ -3,14 +3,23 @@ var lamps_container;
 // This is called when the page finishes loading
 function init() {
     // Assign page elements to variables
+    console.log(window.location.hostname);
     lamps_container = $("#lamps-container");
     fetch("/getDevices")
-    .then(res=>res.json())
-    .catch(error => console.error('Error: ', error))
+    .then(res=>{
+        console.log(res.status)
+        if(res.ok){
+            return res.json();
+        } else {
+            console.log(res.status);
+        }   
+    })
     .then(response => {
         console.log('Succes: ', response);
         updateUI(response);
     })
+    .catch(error => console.error('Error: ', error))
+    
     
 }
 

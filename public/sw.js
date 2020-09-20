@@ -10,7 +10,9 @@ const CACHE_NAME = 'v2_mars',
     '/js/jquery.min.js',
     '/js/config.js',
     '/css/style.css',
-    'favicon.ico'
+    'favicon.ico',
+    '/images/logo.svg',
+    '/manifest.json'
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
