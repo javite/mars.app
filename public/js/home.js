@@ -4,7 +4,7 @@ var lamps_container;
 function init() {
     // Assign page elements to variables
     // lamps_container = $("#lamps-container");
-    fetch("192.168.4.1/wai",{
+    fetch("http://192.168.4.1/wai",{
         method: 'GET',
         mode: 'cors'
     })
