@@ -9,6 +9,7 @@
 @section('content')
     <div class="background-image"></div>
     <div class="container" id="home-container">
+    <div id="state">esperando...</div>
     @auth
 
         @isset($devices)
