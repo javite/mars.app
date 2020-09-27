@@ -10,6 +10,7 @@
     <div class="background-image"></div>
     <div class="container" id="home-container">
     <div id="state">esperando...</div>
+    <div id='error'></div>
     @auth
         <h4>Tus lámparas:</h4>
         <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center"></div>
