@@ -11,19 +11,17 @@
     <div class="container" id="home-container">
     <div id="state">esperando...</div>
     @auth
-
-        @isset($devices)
         <h4>Tus lámparas:</h4>
-        <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center">
-
-        </div>
-        @endisset
-
-        @empty($devices)
-        <h4>No hay lamparas asociadas al usuario</h4>
-        @endempty
+        <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center"></div>
         
     @endauth
+    <br>
+    <div class='container-fluid'>
+        <div class='row'>
+            <button class='btn btn-primary' id='btnAdd' style="display: none;">Baja la web-app</button>
+        </div>
+    </div>
+    
     
     @guest
     <h1>guest</h1>
