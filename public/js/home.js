@@ -55,36 +55,31 @@ function init() {
     lamps_container = $("#lamps-container");
     btnAdd = document.getElementById('btnAdd');
 	btnAdd.style.display = 'none';
-    
-    if (isRunningStandalone()){
-        console.log('standalone');
-        standalone = true;
-     } else {
-        standalone = false;
-    }
 
-    if(!isIos()){
-        window.addEventListener('beforeinstallprompt', (e)=>{
-            e.preventDefault();
-            deferredPrompt = e;
-            btnAdd.style.display = 'block';
-            btnAdd.innerHTML = 'No iOS';
-            btnAdd.addEventListener('click', (e)=>{
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if(choiceResult.outcome === 'accepted'){
-                        console.log('User accepted');
-                    }
-                    deferredPrompt = null;
+    if(!isRunningStandalone()){
+        if(!isIos()){
+            window.addEventListener('beforeinstallprompt', (e)=>{
+                e.preventDefault();
+                deferredPrompt = e;
+                btnAdd.style.display = 'block';
+                btnAdd.innerHTML = 'No iOS';
+                btnAdd.addEventListener('click', (e)=>{
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if(choiceResult.outcome === 'accepted'){
+                            console.log('User accepted');
+                        }
+                        deferredPrompt = null;
+                    });
                 });
-            });
-        })
-    } else {
-        btnAdd.style.display = 'block';
-        btnAdd.innerHTML = 'iOS';
-        alert("Instala la app!");
+            })
+        } else {
+            console.log('standalone');
+            btnAdd.style.display = 'block';
+            btnAdd.innerHTML = 'iOS';
+            btnAdd.addEventListener('click', ()=>alert("Instala la app!"));
+        }
     }
-
 }
 
 function getDevices(){
@@ -117,7 +112,6 @@ function updateUI(_devices){
         lamps_container.append(a) ;
     });
     document.getElementById('state').style.display = 'none';
-    
 }
 
 // Call the init function as soon as the page loads
