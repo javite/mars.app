@@ -34,9 +34,7 @@ function isIos(){
 // This is called when the page finishes loading
 function init() {
     // Assign page elements to variables
-    fetch("/wai",{
-        method: 'GET'
-    })
+    fetch("/wai")
         .then(res => {
             if(res.ok){return res.json();}
         })
@@ -63,15 +61,13 @@ function init() {
         standalone = false;
     }
 
-	window.addEventListener('beforeinstallprompt', (e)=>{
-		e.preventDefault();
-        deferredPrompt = e;
-        console.log(deferredPrompt);
-        btnAdd.style.display = 'block';
-        btnAdd.addEventListener('click', (e)=>{
-            if(isIos()){
-                alert("Instala la app!");
-            } else{
+    if(!isIos()){
+        window.addEventListener('beforeinstallprompt', (e)=>{
+            e.preventDefault();
+            deferredPrompt = e;
+            btnAdd.style.display = 'block';
+            btnAdd.innerHTML = 'No iOS';
+            btnAdd.addEventListener('click', (e)=>{
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if(choiceResult.outcome === 'accepted'){
@@ -79,9 +75,14 @@ function init() {
                     }
                     deferredPrompt = null;
                 });
-            }
-        });
-	});
+            });
+        })
+    } else {
+        btnAdd.style.display = 'block';
+        btnAdd.innerHTML = 'iOS';
+        alert("Instala la app!");
+    }
+
 }
 
 function getDevices(){
@@ -105,8 +106,8 @@ function getDevices(){
         })   
 }
 
-function updateUI(devices){ 
-    devices.forEach(element => {
+function updateUI(_devices){ 
+    _devices.forEach(element => {
         console.log(element);
         let a = `<a href=http://${element['IP']} class="col-md-4 lamp"> ${element['name']}</a>`;
         lamps_container.append(a) ;
