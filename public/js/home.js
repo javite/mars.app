@@ -100,7 +100,7 @@ function getDevices(){
         })
         .catch(error => {
             console.error('Error: ', error);
-            document.getElementById('state').innerHTML = 'error';
+            document.getElementById('state').innerHTML = error;
         })   
 }
 
