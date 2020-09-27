@@ -3,19 +3,19 @@ var lamps_container;
 var wai; //web o AP
 var noInstalado = false;
 var devices = [{
-    id: 0,
-    user_id: 0,
-    name: "Local",
-    current_program_id: 0,
-    model: "---",
-    version: "",
-    firmware_version: null,
-    serial_number: "",
-    IP:"192.168.4.1",
-    net_name:"",
-    api_token: "",
-    created_at: "2020-05-19 21:16:34",
-    updated_at: "2020-08-03 20:19:30"
+    "id": 0,
+    "user_id": 0,
+    "name": "Local",
+    "current_program_id": 0,
+    "model": "---",
+    "version": "",
+    "firmware_version": null,
+    "serial_number": "",
+    "IP":"192.168.4.1",
+    "net_name":"",
+    "api_token": "",
+    "created_at": "2020-05-19 21:16:34",
+    "updated_at": "2020-08-03 20:19:30"
 }];
 
 function isRunningStandalone() {
