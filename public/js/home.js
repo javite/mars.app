@@ -35,8 +35,7 @@ function isIos(){
 function init() {
     // Assign page elements to variables
     fetch("/wai",{
-        method: 'GET',
-        mode: 'cors'
+        method: 'GET'
     })
         .then(res => {
             if(res.ok){return res.json();}
