@@ -95,11 +95,13 @@ function getDevices(){
                 return res.json();
             } else {
                 console.log(res.status);
+                document.getElementById('error2').innerHTML = '!ret.ok';
             }   
         })
         .then(response => {
             console.log('Succes: ', response);
             document.getElementById('error').innerHTML = response;
+            document.getElementById('error2').innerHTML = 'error en get Devices';
             updateUI(response);
         })
         .catch(error => {
