@@ -95,7 +95,7 @@ function getDevices(){
         })
         .then(response => {
             console.log('Succes: ', response);
-            document.getElementById('error').innerHTML = response;
+            document.getElementById('error').innerHTML = response[0];
             document.getElementById('error2').innerHTML = 'error en get Devices';
             updateUI(response);
         })
