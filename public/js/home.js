@@ -11,6 +11,8 @@ var devices = [{
     version: "",
     firmware_version: null,
     serial_number: "",
+    IP:"192.168.4.1",
+    net_name:"",
     api_token: "",
     created_at: "2020-05-19 21:16:34",
     updated_at: "2020-08-03 20:19:30"
