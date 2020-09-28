@@ -94,7 +94,7 @@ function getDevices(){
                 return res.json();
             } else {
                 console.log(res.status);
-                document.getElementById('error2').innerHTML = res.statusText;
+                document.getElementById('error2').innerHTML = res.status;
                 throw Error(res.statusText)
             }   
         })
