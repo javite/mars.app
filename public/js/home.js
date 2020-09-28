@@ -17,7 +17,7 @@ var noInstalado = false;
     "created_at": "2020-05-19 21:16:34",
     "updated_at": "2020-08-03 20:19:30"
 }];*/
-var devices = '[{"id":21,"user_id":7,"name":"Local","current_program_id":null,"model":"","version":"","firmware_version":"","serial_number":"AB124","IP":"192.168.4.1","net_name":"CELES 2.4G","api_token":"sOQHzRI6C2mApAdESvPEZ8dYk7UWMNfzaOsN8aWZVEL406oDVQA1JNp37bgD","created_at":"2020-09-13 20:09:00","updated_at":"2020-09-27 14:43:36"}]';
+var devices = "[{\"id\":21,\"user_id\":7,\"name\":\"Local\",\"current_program_id\":null,\"model\":\"\",\"version\":\"\",\"firmware_version\":\"\",\"serial_number\":\"AB124\",\"IP\":\"192.168.4.1\",\"net_name\":\"CELES 2.4G\",\"api_token\":\"sOQHzRI6C2mApAdESvPEZ8dYk7UWMNfzaOsN8aWZVEL406oDVQA1JNp37bgD\",\"created_at\":\"2020-09-13 20:09:00\",\"updated_at\":\"2020-09-27 14:43:36\"}]";
 
 function isRunningStandalone() {
     //IOs
