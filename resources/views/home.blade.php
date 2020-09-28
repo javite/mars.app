@@ -10,8 +10,8 @@
     <div class="background-image"></div>
     <div class="container" id="home-container">
     <div id="state">esperando...</div>
-    <span>1<div id='error'></div></span>
-    <span>2<div id='error2'></div></span>
+    <div id='error'></div>
+    <div id='error2'></div>
     @auth
         <h4>Tus lámparas:</h4>
         <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center"></div>

@@ -52,7 +52,7 @@ function init() {
             console.log(error);
             console.log('AP');
             wai = 'AP';
-            document.getElementById('error2').innerHTML = 'error en wai';
+            // document.getElementById('error2').innerHTML = 'error en wai';
             updateUI(JSON.parse(devices));
         })
 
@@ -94,18 +94,18 @@ function getDevices(){
                 return res.json();
             } else {
                 console.log(res.status);
-                document.getElementById('error2').innerHTML = res.status;
+                // document.getElementById('error2').innerHTML = res.status;
                 throw Error(res.statusText)
             }   
         })
         .then(response => {
             console.log('Succes: ', response);
-            document.getElementById('error2').innerHTML = 'get Devices';
+            // document.getElementById('error2').innerHTML = 'get Devices';
             updateUI(response);
         })
         .catch(error => {
             console.error('Error: ', error);
-            document.getElementById('state').innerHTML = error;
+            // document.getElementById('state').innerHTML = error;
         })   
 }
 
