@@ -37,7 +37,11 @@ function init() {
     // Assign page elements to variables
     fetch("/wai")
         .then(res => {
-            if(res.ok){return res.json();}
+            if(res.ok){
+                return res.json();
+            } else {
+                throw Error(res.statusText);
+            }
         })
         .then(res => {
             wai = res.conn;
