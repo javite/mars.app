@@ -53,7 +53,7 @@ function init() {
             console.log('AP');
             wai = 'AP';
             document.getElementById('error2').innerHTML = 'error en wai';
-            updateUI(devices);
+            updateUI(JSON.parse(devices));
         })
 
     lamps_container = $("#lamps-container");
