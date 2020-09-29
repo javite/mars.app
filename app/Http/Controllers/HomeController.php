@@ -27,6 +27,9 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $user_id = $user->id;
+        if($user->id == null){
+            return view('login');
+        }
         $devices = Device::where("user_id","=",$user_id )->get();
         if(!$devices->isEmpty()){
             $vac = compact('devices');

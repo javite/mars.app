@@ -95,16 +95,16 @@ Route::get('/service/migrate',function(){
         '--force' => true,
     ]);
 });
-Route::get('/programList',"DevicesController@programList");
-Route::get('/outputList',"ProgramsController@outputList");
+// Route::get('/programList',"DevicesController@programList");
+// Route::get('/outputList',"ProgramsController@outputList");
 Route::get('/debug', function () {
     return view('debug');
 });
 
-Route::get('/updateProgram/{day_id}',"DaysController@updateProgram");
-Route::get('/updateProgramOutput/{output_id}',"OutputsController@updateProgram");
+// Route::get('/updateProgram/{day_id}',"DaysController@updateProgram");
+// Route::get('/updateProgramOutput/{output_id}',"OutputsController@updateProgram");
 
-Auth::routes(['register' => false]); //['register' => false]
+Auth::routes(['register' => false]); 
 
 
 //         // Authentication Routes...
