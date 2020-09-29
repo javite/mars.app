@@ -46,19 +46,27 @@ function init() {
         .then(res => {
             wai = res.conn;
             console.log('web');
-            if(wai == 'web'){getDevices();}
+            
+            if(wai == 'web'){
+                btnUpdate.style.display = 'block';
+                getDevices();
+            }
         })
         .catch(error => {
             console.log(error);
             console.log('AP');
             wai = 'AP';
-            // document.getElementById('error2').innerHTML = 'error en wai';
+            btnUpdate.style.display = 'none';
             updateUI(devices);
+            window.location.href = "http://192.168.4.1";
         })
 
     lamps_container = $("#lamps-container");
     btnAdd = document.getElementById('btnAdd');
-	btnAdd.style.display = 'none';
+    btnAdd.style.display = 'none';
+    btnUpdate = document.getElementById('btnUpdate');
+    btnUpdate.addEventListener('click',()=>location.reload());
+    btnUpdate.style.display = 'none';
 
     if(!isRunningStandalone()){
         if(!isIos()){
@@ -66,7 +74,7 @@ function init() {
                 e.preventDefault();
                 deferredPrompt = e;
                 btnAdd.style.display = 'block';
-                btnAdd.innerHTML = 'No iOS';
+                btnAdd.innerHTML = 'Instalar webapp';
                 btnAdd.addEventListener('click', (e)=>{
                     deferredPrompt.prompt();
                     deferredPrompt.userChoice.then((choiceResult) => {
@@ -80,8 +88,8 @@ function init() {
         } else {
             console.log('standalone');
             btnAdd.style.display = 'block';
-            btnAdd.innerHTML = 'iOS';
-            btnAdd.addEventListener('click', ()=>alert("Instala la app!"));
+            btnAdd.innerHTML = 'Instalar webapp iOS';
+            btnAdd.addEventListener('click', ()=>alert("Instala la app agegando al escritorio"));
         }
     }
 }

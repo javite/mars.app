@@ -20,10 +20,15 @@
     <br>
     <div class='container-fluid'>
         <div class='row'>
-            <button class='btn btn-primary' id='btnAdd' style="display: none;">Baja la web-app</button>
+            <button class='btn btn-secondary' id='btnAdd' style="display: none;">Baja la web-app</button>
         </div>
     </div>
-    
+    <br>
+    <div class='container-fluid'>
+        <div class='row'>
+            <button class='btn btn-dark' id='btnUpdate' style="display: none;">Actualizar</button>
+        </div>
+    </div>
     
     @guest
     <h1>guest</h1>
