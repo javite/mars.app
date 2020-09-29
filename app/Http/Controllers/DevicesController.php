@@ -11,10 +11,11 @@ class DevicesController extends Controller
 {
     public function getDevices(){
         $user = Auth::user();
-        $user_id = $user->id;
+        
         if(is_null($user->id)){
             return view('login');
         }
+        $user_id = $user->id;
         $devices = Device::where("user_id","=",$user_id )->get();
 
         return $devices;
