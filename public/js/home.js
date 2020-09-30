@@ -2,6 +2,7 @@
 var lamps_container;
 var wai; //web o AP
 var noInstalado = false;
+var user_id;
 var devices = [{
     id: 0,
     user_id: 0,
@@ -35,38 +36,19 @@ function isIos(){
 // This is called when the page finishes loading
 function init() {
     // Assign page elements to variables
-    fetch("/wai")
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            } else {
-                throw Error(res.statusText);
-            }
-        })
-        .then(res => {
-            wai = res.conn;
-            console.log('web');
-            
-            if(wai == 'web'){
-                btnUpdate.style.display = 'block';
-                getDevices();
-            }
-        })
-        .catch(error => {
-            console.log(error);
-            console.log('AP');
-            wai = 'AP';
-            btnUpdate.style.display = 'none';
-            updateUI(devices);
-            window.location.href = "http://192.168.4.1";
-        })
 
+    fwai();
     lamps_container = $("#lamps-container");
     btnAdd = document.getElementById('btnAdd');
     btnAdd.style.display = 'none';
     btnUpdate = document.getElementById('btnUpdate');
-    btnUpdate.addEventListener('click',()=>location.reload());
-    btnUpdate.style.display = 'none';
+    btnUpdate.addEventListener('click',()=>{
+        lamps_container.html("");
+        fwai();
+    });
+    btnUpdate.style.display = 'block';
+    user_id = document.getElementById('user_id').value;
+    console.log(user_id);
 
     if(!isRunningStandalone()){
         if(!isIos()){
@@ -93,9 +75,35 @@ function init() {
         }
     }
 }
+function fwai(){
+    fetch("/wai")
+    .then(res => {
+        if(res.ok){
+            return res.json();
+        } else {
+            throw Error(res.statusText);
+        }
+    })
+    .then(res => {
+        wai = res.conn;
+        console.log('web');
+        if(wai == 'web'){
+            // btnUpdate.style.display = 'block';
+            getDevices();
+        }
+    })
+    .catch(error => {
+        console.log(error);
+        console.log('AP');
+        wai = 'AP';
+        // btnUpdate.style.display = 'none';
+        updateUI(devices);
+        window.location.href = "http://192.168.4.1";
+    })
+}
 
 function getDevices(){
-    fetch("/getDevices")
+    fetch("/getDevices/" + user_id)
         .then(res=>{
             console.log(res.status)
             if(res.ok){

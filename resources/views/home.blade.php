@@ -9,18 +9,16 @@
 @section('content')
     <div class="background-image"></div>
     <div class="container" id="home-container">
+    <input type="hidden" name="user_id" id="user_id" value="{{$user_id}}">
     <div id="state">esperando...</div>
     <div id='error'></div>
     <div id='error2'></div>
-    @auth
-        <h4>Tus lámparas:</h4>
-        <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center"></div>
-        
-    @endauth
+    <h4>Tus lámparas:</h4>
+    <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center"></div>
     <br>
     <div class='container-fluid'>
         <div class='row'>
-            <button class='btn btn-secondary' id='btnAdd' style="display: none;">Baja la web-app</button>
+            <button class='btn btn-secondary' id='btnAdd' style="display: none;"></button>
         </div>
     </div>
     <br>

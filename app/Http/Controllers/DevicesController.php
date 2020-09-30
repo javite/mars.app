@@ -9,13 +9,8 @@ use App\Device;
 
 class DevicesController extends Controller
 {
-    public function getDevices(){
-        $user = Auth::user();
-        
-        if(is_null($user->id)){
-            return view('login');
-        }
-        $user_id = $user->id;
+    public function getDevices($user_id){
+
         $devices = Device::where("user_id","=",$user_id )->get();
 
         return $devices;

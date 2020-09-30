@@ -30,12 +30,8 @@ class HomeController extends Controller
         if(is_null($user->id)){
             return view('login');
         }
-        $devices = Device::where("user_id","=",$user_id )->get();
-        if(!$devices->isEmpty()){
-            $vac = compact('devices');
-            return view('home', $vac);
-        }
-        return view('home');
-         
+        $vac = compact('user_id');
+        return view('home', $vac);
+        
     }
 }

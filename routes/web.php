@@ -37,7 +37,7 @@ Route::get('/wai', function () {
 // });//->middleware('auth');
 
 /*DEVICES*/
-Route::get('/getDevices',"DevicesController@getDevices");
+Route::get('/getDevices/{user_id}',"DevicesController@getDevices");
 // Route::post('/saveDevice',"DevicesController@saveDevice");
 // Route::post('/deleteDevice',"DevicesController@deleteDevice");
 // Route::post('/newDevice',"DevicesController@newDevice");
