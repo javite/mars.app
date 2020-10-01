@@ -23,7 +23,7 @@ var btnTest;
 var te;
 
 function test(){
-    fetch("http://192.168.1.42/test")
+    fetch("http://192.168.1.42/test.png")
     .then(res => {
         if(res.ok){
             return res.text();
