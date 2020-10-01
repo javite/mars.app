@@ -74,7 +74,7 @@ function init() {
             console.log('standalone');
             btnAdd.style.display = 'block';
             btnAdd.innerHTML = 'Instalar webapp iOS';
-            btnAdd.addEventListener('click', ()=>alert("Instala la app agegando al escritorio"));
+            btnAdd.addEventListener('click', ()=>alert("Para instalar la app presion Agregar a inicio"));
         }
     }
 }

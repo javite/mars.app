@@ -15,16 +15,17 @@
     <div id='error2'></div>
     <h4>Tus lámparas:</h4>
     <div id="lamps-container" class="d-flex flex-column justify-content-center align-items-center"></div>
+  
     <br>
     <div class='container-fluid'>
         <div class='row'>
-            <button class='btn btn-secondary' id='btnAdd' style="display: none;"></button>
+            <button class='btn btn-dark' id='btnUpdate' style="display: none;">Actualizar</button>
         </div>
     </div>
     <br>
     <div class='container-fluid'>
         <div class='row'>
-            <button class='btn btn-dark' id='btnUpdate' style="display: none;">Actualizar</button>
+            <button class='btn btn-secondary' id='btnAdd' style="display: none;"></button>
         </div>
     </div>
 
