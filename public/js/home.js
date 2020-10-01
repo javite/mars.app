@@ -19,6 +19,24 @@ var devices = [{
     updated_at: "2020-08-03 20:19:30"
 }];
 //var devices = "[{\"id\":21,\"user_id\":7,\"name\":\"Local\",\"current_program_id\":null,\"model\":\"\",\"version\":\"\",\"firmware_version\":\"\",\"serial_number\":\"AB124\",\"IP\":\"192.168.4.1\",\"net_name\":\"CELES 2.4G\",\"api_token\":\"sOQHzRI6C2mApAdESvPEZ8dYk7UWMNfzaOsN8aWZVEL406oDVQA1JNp37bgD\",\"created_at\":\"2020-09-13 20:09:00\",\"updated_at\":\"2020-09-27 14:43:36\"}]";
+var btnTest;
+
+function test(){
+    fetch("http://192.168.1.42/test")
+    .then(res => {
+        if(res.ok){
+            return res.text();
+        } else {
+            throw Error(res.statusText);
+        }
+    })
+    .then(res => {
+        console.log(res);
+    })
+    .catch(error => {
+        console.log(error);
+    })
+}
 
 function isRunningStandalone() {
     //IOs
@@ -47,6 +65,10 @@ function init() {
         fwai();
     });
     btnUpdate.style.display = 'block';
+    btnTest = document.getElementById('test');
+    btnTest.addEventListener('click',()=>{
+        test();
+    });
     user_id = document.getElementById('user_id').value;
     console.log(user_id);
 
@@ -75,6 +97,7 @@ function init() {
         }
     }
 }
+
 function fwai(){
     fetch("/wai")
     .then(res => {

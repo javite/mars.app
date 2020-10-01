@@ -27,6 +27,12 @@
             <button class='btn btn-dark' id='btnUpdate' style="display: none;">Actualizar</button>
         </div>
     </div>
+
+    <div class='container-fluid'>
+        <div class='row'>
+            <button class='btn btn-dark' id='test'>Test</button>
+        </div>
+    </div>
     
     @guest
     <h1>guest</h1>
