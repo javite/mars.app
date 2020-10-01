@@ -1,7 +1,7 @@
 ;
 //asignar un nombre y versión al cache
 
-const CACHE_NAME = 'v3_mars',
+const CACHE_NAME = 'v4_mars',
   urlsToCache = [
     '/',
     '/index.php',

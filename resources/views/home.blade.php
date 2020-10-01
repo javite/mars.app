@@ -28,12 +28,6 @@
         </div>
     </div>
 
-    <div class='container-fluid'>
-        <div class='row'>
-            <button class='btn btn-dark' id='test'>Test</button>
-        </div>
-    </div>
-    <img src="http://192.168.1.42/test" alt="" srcset="">
     
     @guest
     <h1>guest</h1>
