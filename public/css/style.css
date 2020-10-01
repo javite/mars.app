@@ -53,9 +53,12 @@ img {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0.7rem 1rem;
-    background: #f6ad4a;  /* fallback for old browsers */
+    color:#cfcfcf;
+    background: #1c1c1c;
+    /*
+    background: #f6ad4a; 
     background: -webkit-linear-gradient(to bottom, #fb835c, #f6ad4a); 
-    background: linear-gradient(to bottom, #fb835c, #f6ad4a);
+    background: linear-gradient(to bottom, #fb835c, #f6ad4a);*/
 
 }
 .container {
@@ -147,7 +150,7 @@ h4, h4 {
     font-family: inherit;
     font-weight: 400;
     line-height: 1.2;
-    color: #7b3b3b;
+    color: #d06520;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -210,9 +213,10 @@ label{
     z-index: -1;
     display: block;
     height: 100vh;
-    background: #FF5F6D; 
+    color: #d06520;
+    background: #1c1c1c;/*#FF5F6D; 
     background: -webkit-linear-gradient(to bottom, #f5a333e3, #FF5F6D);  
-    background: linear-gradient(to bottom, #f5a333e3, #FF5F6D); 
+    background: linear-gradient(to bottom, #f5a333e3, #FF5F6D); */
 
 }
  
@@ -311,6 +315,7 @@ label{
 
 #home-container{
     text-align: center;
+    margin-top: 30px;
 }
 
 #fecha-fin-1::-webkit-calendar-picker-indicator  {
@@ -318,12 +323,13 @@ label{
     visibility: hidden;
 }
 .lamp{
-    width: 80%;
+    width: 63%;
+    min-width: 250px;
     margin-top: 20px;
     /* margin-left: 20px; */
-    border-radius: 30px;;
-    background-color: #b54444ab;
-    color: white;
+    border-radius: 15px;;
+    background-color: #bb5a20;
+    color: #cfcfcf;
     line-height: 50px;
 }
 .lamp:first{

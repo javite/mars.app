@@ -48,7 +48,8 @@ function init() {
         fwai();
     });
     btnUpdate.style.display = 'block';
-    
+    btnUser = document.getElementById('logout-form');
+
     user_id = document.getElementById('user_id').value;
     console.log(user_id);
 
@@ -91,7 +92,7 @@ function fwai(){
         wai = res.conn;
         console.log('web');
         if(wai == 'web'){
-            // btnUpdate.style.display = 'block';
+            btnUser.style.display = 'block';
             getDevices();
         }
     })
@@ -99,7 +100,7 @@ function fwai(){
         console.log(error);
         console.log('AP');
         wai = 'AP';
-        // btnUpdate.style.display = 'none';
+        btnUser.style.display = 'none';
         updateUI(devices);
         window.location.href = "http://192.168.4.1";
     })
