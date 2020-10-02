@@ -1,7 +1,7 @@
 {
   "name": "Mars",
   "short_name": "Mars",
-  "description": "App para configurar lamparas Mars",
+  "description": "WebApp para configurar lamparas Mars",
   "background_color": "#FFFFFF",
   "theme_color": "#1c1c1c",
   "orientation": "portrait-primary",
@@ -25,5 +25,4 @@
       "type": "image/png"
   }
 ]
-
 }
