@@ -17,7 +17,7 @@
                                         @csrf
         <button type="submit" id="btn-logout">
             <a class="usuario" href="">
-                <i class="material-icons user-icon">account_circle</i>
+                <img src="images/account_circle.svg" class="material-icons user-icon">
             </a>
         </button>
     </form>

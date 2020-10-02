@@ -33,13 +33,14 @@ body{
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0.7rem 1rem;
-    background: #f6ad4a;  /* fallback for old browsers */
+    /*
+    background: #f6ad4a;  
     background: -webkit-linear-gradient(to bottom, #fb835c, #f6ad4a); 
-    background: linear-gradient(to bottom, #fb835c, #f6ad4a);
+    background: linear-gradient(to bottom, #fb835c, #f6ad4a);*/
 
     /*gris oscuro*/
-    /* background: -webkit-linear-gradient(to bottom, #414345, #232526); 
-    background: linear-gradient(to bottom, #414345, #232526);  */
+    background: -webkit-linear-gradient(to bottom, #414345, #232526); 
+    background: linear-gradient(to bottom, #414345, #232526);  
 }
 
 .navbar-toggler{
@@ -74,7 +75,9 @@ label{
     background-color: transparent;
     border: 0;
 }
-
+a.nav-link{
+    color: #f26520!important;
+}
 .background-image {
     position: fixed;
     top: 0;
@@ -83,9 +86,12 @@ label{
     z-index: -1;
     display: block;
     height: 100vh;
+    background: -webkit-linear-gradient(to bottom, #414345, #232526); 
+    background: linear-gradient(to bottom, #414345, #232526);  
+    /*
     background: #FF5F6D; 
     background: -webkit-linear-gradient(to bottom, #f5a333e3, #FF5F6D);  
-    background: linear-gradient(to bottom, #f5a333e3, #FF5F6D); 
+    background: linear-gradient(to bottom, #f5a333e3, #FF5F6D); */
     margin-bottom: 60px;
 }
  
