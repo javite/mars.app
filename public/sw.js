@@ -1,7 +1,7 @@
 ;
 //asignar un nombre y versión al cache
 
-const CACHE_NAME = 'v4_mars',
+const CACHE_NAME = 'v5_mars',
   urlsToCache = [
     '/',
     '/index.php',
@@ -12,7 +12,8 @@ const CACHE_NAME = 'v4_mars',
     '/css/style.css',
     'favicon.ico',
     '/images/logo.svg',
-    '/manifest.json'
+    '/manifest.json',
+    '/images/account_circle.svg'
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
