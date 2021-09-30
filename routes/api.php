@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 //***TODO LO QUE ENVIA UNA PETICION DEBE TENER ANTER LA RUTA /API/ ANTES DEL NOMBRE DE LA PETICION, por ejemplo /api/getDevice/c5c4a24 ****/
 Route::get('/getDevices/{user_id}',"DevicesController@getDevices");
 Route::get('/getDevice/{serial_number}/{ip}/{net_name}',"DevicesController@getDevice");
+Route::get('/getSerial/{mac}/{model}',"DevicesController@getSerial");
 Route::get('/getPrograms/{device_id}',"ProgramsController@getPrograms");
 Route::get('/getProgram/{program_id}',"ProgramsController@getProgram");
 Route::get('/getOutputs/{program_id}',"OutputsController@getOutputs");

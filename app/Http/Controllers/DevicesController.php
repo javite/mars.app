@@ -42,6 +42,19 @@ class DevicesController extends Controller
         }
         return $response;
     }
+    public function getSerial($mac, $model){
+        $response = -2;
+        $device = Device::wherenull("api_token")->get()->first();
+        if ($device != null){
+            $device->model = $model;
+            $device->mac = $mac;
+            $device->api_token = Str::random(60);
+            if($device->save()){
+                $response = $device;
+            } else $response = -1;
+        } 
+        return $response;
+    }
 
     public function saveDevice(Request $data){
         $device_id = $data["device_id"];
